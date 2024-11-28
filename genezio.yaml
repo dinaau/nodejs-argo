@@ -13,6 +13,6 @@ backend:
             - npm install
         local:
             - npm install
-name: nodejs-argo
+name: g1
 region: us-east-1
 yamlVersion: 2
