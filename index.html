@@ -3,64 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A random modern static landing page." />
-  <title>Northstar — Simple Ideas, Better Days</title>
+  <meta name="description" content="A lightweight static introduction page for Deno." />
+  <title>Deno — Modern JavaScript Runtime</title>
+
   <style>
     :root {
-      --bg: #f7f8fc;
-      --surface: rgba(255, 255, 255, 0.78);
-      --text: #172033;
-      --muted: #68738a;
-      --primary: #5b67f1;
-      --primary-dark: #434dcc;
-      --accent: #39c6a4;
-      --border: rgba(23, 32, 51, 0.1);
-      --shadow: 0 20px 60px rgba(54, 65, 120, 0.12);
-      --radius: 22px;
+      --background: #f7f6f2;
+      --surface: #ffffff;
+      --text: #111111;
+      --muted: #66645f;
+      --border: #d9d7d0;
+      --green: #a8e6b1;
+      --yellow: #f6dc75;
+      --orange: #f2a56f;
+      --radius-large: 30px;
+      --radius-medium: 20px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       min-height: 100vh;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 10% 10%, rgba(91, 103, 241, 0.16), transparent 30%),
-        radial-gradient(circle at 90% 20%, rgba(57, 198, 164, 0.14), transparent 28%),
-        var(--bg);
-      line-height: 1.6;
+        radial-gradient(circle at 15% 12%, rgba(168, 230, 177, 0.42), transparent 24rem),
+        radial-gradient(circle at 88% 22%, rgba(246, 220, 117, 0.34), transparent 22rem),
+        var(--background);
+      line-height: 1.5;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1120px, calc(100% - 40px));
-      margin: 0 auto;
-    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
 
     header {
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 10;
+      background: rgba(247, 246, 242, 0.88);
+      border-bottom: 1px solid rgba(17, 17, 17, 0.08);
       backdrop-filter: blur(14px);
-      background: rgba(247, 248, 252, 0.78);
-      border-bottom: 1px solid var(--border);
     }
 
     nav {
-      height: 74px;
+      min-height: 74px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -71,20 +58,20 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      font-size: 1.2rem;
       font-weight: 800;
-      letter-spacing: -0.03em;
-      font-size: 1.1rem;
+      letter-spacing: -0.04em;
     }
 
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 13px;
+    .logo {
+      width: 42px;
+      height: 42px;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, var(--primary), #8891ff);
-      color: white;
-      box-shadow: 0 10px 25px rgba(91, 103, 241, 0.28);
+      border: 2px solid var(--text);
+      border-radius: 50%;
+      background: var(--surface);
+      font-size: 1.35rem;
     }
 
     .nav-links {
@@ -96,420 +83,328 @@
       font-weight: 600;
     }
 
-    .nav-links a:hover {
-      color: var(--text);
-    }
+    .nav-links a:hover { color: var(--text); }
 
     .button {
+      min-height: 48px;
+      padding: 0 22px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0 22px;
+      border: 2px solid var(--text);
       border-radius: 999px;
-      border: 1px solid transparent;
       font-weight: 700;
-      transition: 0.2s ease;
-      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .button-primary {
-      color: white;
-      background: var(--primary);
-      box-shadow: 0 12px 30px rgba(91, 103, 241, 0.25);
+    .button:hover { transform: translateY(-2px); box-shadow: 5px 5px 0 var(--text); }
+    .button-dark { color: white; background: var(--text); }
+    .button-light { background: var(--surface); }
+
+    .hero { padding: 96px 0 70px; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 64px;
     }
 
-    .button-primary:hover {
-      transform: translateY(-2px);
-      background: var(--primary-dark);
-    }
-
-    .button-secondary {
-      background: white;
-      border-color: var(--border);
-    }
-
-    .button-secondary:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
-    }
-
-    .hero {
-      padding: 110px 0 80px;
-      text-align: center;
-    }
-
-    .eyebrow {
+    .badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(91, 103, 241, 0.1);
-      color: var(--primary-dark);
-      font-size: 0.85rem;
-      font-weight: 800;
+      gap: 9px;
       margin-bottom: 24px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 700;
     }
 
-    .eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
+    .badge-dot {
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
-      background: var(--accent);
+      background: #31a853;
+      box-shadow: 0 0 0 5px rgba(49, 168, 83, 0.12);
     }
 
     h1 {
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: clamp(3rem, 8vw, 6.4rem);
-      line-height: 0.98;
-      letter-spacing: -0.07em;
-    }
-
-    .gradient-text {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero p {
-      max-width: 680px;
-      margin: 28px auto 0;
-      color: var(--muted);
-      font-size: clamp(1rem, 2vw, 1.2rem);
-    }
-
-    .hero-actions {
-      margin-top: 34px;
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .showcase {
-      margin-top: 64px;
-      padding: 18px;
-      border-radius: 30px;
-      background: var(--surface);
-      border: 1px solid rgba(255, 255, 255, 0.85);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(20px);
-    }
-
-    .showcase-inner {
-      min-height: 390px;
-      border-radius: 22px;
-      padding: 36px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 28px;
-      background:
-        linear-gradient(145deg, rgba(91, 103, 241, 0.1), rgba(57, 198, 164, 0.08)),
-        white;
-    }
-
-    .panel {
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid var(--border);
-      box-shadow: 0 15px 35px rgba(54, 65, 120, 0.08);
-    }
-
-    .main-panel {
-      padding: 34px;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .main-panel h2 {
-      font-size: 2rem;
-      letter-spacing: -0.04em;
-      margin-bottom: 10px;
-    }
-
-    .main-panel p {
-      color: var(--muted);
-      max-width: 500px;
-    }
-
-    .progress {
-      margin-top: 28px;
-      height: 12px;
-      border-radius: 999px;
-      background: #edf0f8;
-      overflow: hidden;
-    }
-
-    .progress span {
-      display: block;
-      width: 72%;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-    }
-
-    .metric-row {
-      margin-top: 28px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .metric {
-      padding: 18px;
-      border-radius: 18px;
-      background: #f7f8fc;
-    }
-
-    .metric strong {
-      display: block;
-      font-size: 1.4rem;
-    }
-
-    .metric span {
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-
-    .stack {
-      display: grid;
-      gap: 18px;
-    }
-
-    .mini-panel {
-      padding: 24px;
-      text-align: left;
-    }
-
-    .mini-panel strong {
-      font-size: 1.1rem;
-    }
-
-    .mini-panel p {
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .orb {
-      width: 64px;
-      height: 64px;
-      border-radius: 22px;
-      margin-bottom: 20px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      box-shadow: 0 14px 30px rgba(91, 103, 241, 0.25);
-    }
-
-    section {
-      padding: 90px 0;
-    }
-
-    .section-heading {
       max-width: 700px;
-      margin-bottom: 42px;
+      font-size: clamp(3.3rem, 7vw, 6.6rem);
+      line-height: 0.94;
+      letter-spacing: -0.075em;
+    }
+
+    .highlight { position: relative; display: inline-block; z-index: 0; }
+    .highlight::after {
+      content: "";
+      position: absolute;
+      left: -2%; right: -2%; bottom: 8%; height: 25%;
+      z-index: -1;
+      border-radius: 8px;
+      background: var(--green);
+      transform: rotate(-1.5deg);
+    }
+
+    .hero-copy {
+      max-width: 620px;
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 1.12rem;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .terminal-wrap { position: relative; }
+    .shape { position: absolute; border: 2px solid var(--text); z-index: -1; }
+
+    .shape-one {
+      width: 130px; height: 130px; top: -36px; right: -26px;
+      border-radius: 50%; background: var(--yellow);
+    }
+
+    .shape-two {
+      width: 95px; height: 95px; left: -34px; bottom: -28px;
+      border-radius: 26px; background: var(--orange); transform: rotate(12deg);
+    }
+
+    .terminal {
+      overflow: hidden;
+      border: 2px solid var(--text);
+      border-radius: var(--radius-large);
+      background: #151515;
+      color: #f6f6f2;
+      box-shadow: 12px 12px 0 var(--text);
+    }
+
+    .terminal-header {
+      padding: 17px 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #363636;
+      background: #202020;
+    }
+
+    .terminal-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .terminal-dot.red { background: #ff6b64; }
+    .terminal-dot.yellow { background: #f6d365; }
+    .terminal-dot.green { background: #7ddf86; }
+    .terminal-title { margin-left: 8px; color: #aaa; font-size: 0.82rem; }
+
+    .terminal-body {
+      min-height: 390px;
+      padding: 30px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.94rem;
+      line-height: 1.8;
+    }
+
+    .terminal-body .muted { color: #888; }
+    .terminal-body .green { color: #9ee6a7; }
+    .terminal-body .yellow { color: #f5dc80; }
+    .terminal-body .blue { color: #8fc8ff; }
+    .terminal-body .prompt { color: #9ee6a7; font-weight: 700; }
+
+    .terminal-result {
+      margin-top: 24px;
+      padding: 18px;
+      border: 1px solid #3c3c3c;
+      border-radius: 14px;
+      background: #1c1c1c;
+      color: #d7d7d7;
+    }
+
+    section { padding: 86px 0; }
+    .section-heading { max-width: 730px; margin-bottom: 42px; }
+
+    .section-heading span {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     .section-heading h2 {
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    .section-heading p { margin-top: 18px; color: var(--muted); font-size: 1.05rem; }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+
+    .card {
+      min-height: 270px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 2px solid var(--text);
+      border-radius: var(--radius-medium);
+      background: var(--surface);
+      box-shadow: 7px 7px 0 var(--text);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover { transform: translate(-3px, -3px); }
+    .card:nth-child(2) { background: var(--green); }
+    .card:nth-child(3) { background: var(--yellow); }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--text);
+      border-radius: 16px;
+      background: var(--surface);
+      font-weight: 900;
+      font-size: 1.2rem;
+    }
+
+    .card h3 { margin-top: 46px; font-size: 1.45rem; letter-spacing: -0.035em; }
+    .card p { margin-top: 10px; color: #4d4b47; }
+
+    .install {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 48px;
+      align-items: center;
+      padding: 48px;
+      border: 2px solid var(--text);
+      border-radius: var(--radius-large);
+      background: var(--surface);
+      box-shadow: 10px 10px 0 var(--text);
+    }
+
+    .install h2 {
       font-size: clamp(2.2rem, 5vw, 4rem);
       line-height: 1;
       letter-spacing: -0.055em;
     }
 
-    .section-heading p {
-      color: var(--muted);
-      margin-top: 18px;
-      font-size: 1.05rem;
-    }
+    .install p { margin-top: 18px; color: var(--muted); }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .card {
-      padding: 30px;
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid var(--border);
-      box-shadow: 0 15px 40px rgba(54, 65, 120, 0.07);
-      transition: 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 15px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 22px;
+    .code-box {
+      padding: 24px;
+      overflow-x: auto;
+      border-radius: 18px;
+      background: #151515;
       color: white;
-      font-weight: 900;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.92rem;
+      line-height: 1.8;
     }
 
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-    }
+    .code-box .comment { color: #858585; }
+    .code-box .command { color: #a8e6b1; }
 
-    .card p {
-      color: var(--muted);
-    }
-
-    .cta {
-      padding: 72px 40px;
-      border-radius: 32px;
-      text-align: center;
-      color: white;
-      background:
-        radial-gradient(circle at 15% 15%, rgba(255,255,255,0.16), transparent 25%),
-        linear-gradient(135deg, #4d57d8, #2fae91);
-      box-shadow: var(--shadow);
-    }
-
-    .cta h2 {
-      font-size: clamp(2.3rem, 5vw, 4.4rem);
-      line-height: 1;
-      letter-spacing: -0.055em;
-    }
-
-    .cta p {
-      max-width: 620px;
-      margin: 20px auto 30px;
-      color: rgba(255, 255, 255, 0.82);
-    }
-
-    .cta .button {
-      background: white;
-      color: var(--text);
-    }
-
-    footer {
-      padding: 40px 0 50px;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
+    footer { padding: 50px 0; color: var(--muted); font-size: 0.9rem; }
     .footer-row {
       display: flex;
       justify-content: space-between;
       gap: 20px;
       flex-wrap: wrap;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
     }
 
-    @media (max-width: 800px) {
-      .nav-links {
-        display: none;
-      }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero-grid, .install { grid-template-columns: 1fr; }
+      .hero-grid { gap: 70px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .terminal-body { min-height: auto; }
+    }
 
-      .hero {
-        padding-top: 80px;
-      }
-
-      .showcase-inner,
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .metric-row {
-        grid-template-columns: 1fr;
-      }
-
-      .showcase-inner {
-        padding: 20px;
-      }
-
-      .main-panel,
-      .mini-panel {
-        padding: 24px;
-      }
+    @media (max-width: 560px) {
+      .container { width: min(100% - 24px, 1160px); }
+      .hero { padding-top: 70px; }
+      .terminal-body, .install { padding: 22px; }
+      .button { width: 100%; }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="container">
       <nav>
-        <a class="brand" href="#">
-          <span class="brand-mark">N</span>
-          <span>Northstar</span>
+        <a class="brand" href="#top" aria-label="Deno home">
+          <span class="logo">◉</span>
+          <span>Deno</span>
         </a>
 
         <div class="nav-links">
-          <a href="#features">Features</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
+          <a href="#features">Runtime</a>
+          <a href="#install">Install</a>
+          <a href="https://docs.deno.com/" target="_blank" rel="noopener">Docs</a>
+          <a href="https://github.com/denoland/deno" target="_blank" rel="noopener">GitHub</a>
         </div>
 
-        <a class="button button-primary" href="#contact">Get started</a>
+        <a class="button button-dark" href="#install">Get started</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="top">
     <section class="hero">
-      <div class="container">
-        <span class="eyebrow">Built for better momentum</span>
-        <h1>Turn simple ideas into <span class="gradient-text">meaningful progress.</span></h1>
-        <p>
-          A lightweight static landing page with a modern layout, responsive design,
-          and zero external dependencies.
-        </p>
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">
+            <span class="badge-dot"></span>
+            JavaScript and TypeScript runtime
+          </div>
 
-        <div class="hero-actions">
-          <a class="button button-primary" href="#features">Explore features</a>
-          <a class="button button-secondary" href="#about">Learn more</a>
+          <h1>
+            JavaScript,
+            <span class="highlight">uncomplicated.</span>
+          </h1>
+
+          <p class="hero-copy">
+            Deno is a modern, open-source runtime with TypeScript support,
+            npm compatibility, secure defaults, and the tools you need built in.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-dark" href="#install">Install Deno</a>
+            <a class="button button-light" href="https://docs.deno.com/" target="_blank" rel="noopener">Read the docs</a>
+          </div>
         </div>
 
-        <div class="showcase" id="about">
-          <div class="showcase-inner">
-            <div class="panel main-panel">
-              <div>
-                <div class="orb"></div>
-                <h2>Stay focused on what matters.</h2>
-                <p>
-                  Clear structure, thoughtful spacing, and subtle details create a page
-                  that feels polished without being heavy.
-                </p>
+        <div class="terminal-wrap">
+          <div class="shape shape-one"></div>
+          <div class="shape shape-two"></div>
 
-                <div class="progress"><span></span></div>
-
-                <div class="metric-row">
-                  <div class="metric">
-                    <strong>100%</strong>
-                    <span>Static</span>
-                  </div>
-                  <div class="metric">
-                    <strong>0</strong>
-                    <span>Dependencies</span>
-                  </div>
-                  <div class="metric">
-                    <strong>Fast</strong>
-                    <span>Load time</span>
-                  </div>
-                </div>
-              </div>
+          <div class="terminal">
+            <div class="terminal-header">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">hello.ts</span>
             </div>
 
-            <div class="stack">
-              <div class="panel mini-panel">
-                <strong>Responsive by default</strong>
-                <p>Designed to work smoothly across desktop, tablet, and mobile screens.</p>
-              </div>
-              <div class="panel mini-panel">
-                <strong>Easy to customise</strong>
-                <p>Update the colours, copy, and sections directly inside one HTML file.</p>
+            <div class="terminal-body">
+              <div><span class="blue">Deno</span>.<span class="yellow">serve</span>(() =&gt; {</div>
+              <div>&nbsp;&nbsp;<span class="green">return</span> new Response(</div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="yellow">"Hello from Deno!"</span></div>
+              <div>&nbsp;&nbsp;);</div>
+              <div>});</div>
+
+              <br />
+
+              <div><span class="prompt">$</span> deno run --allow-net hello.ts</div>
+
+              <div class="terminal-result">
+                <span class="muted">Listening on</span><br />
+                <span class="green">http://localhost:8000/</span>
               </div>
             </div>
           </div>
@@ -520,42 +415,63 @@
     <section id="features">
       <div class="container">
         <div class="section-heading">
-          <h2>Everything you need. Nothing you do not.</h2>
+          <span>One runtime, less setup</span>
+          <h2>Everything you need is already included.</h2>
           <p>
-            A clean base for a personal project, product launch, portfolio, or simple business website.
+            Start small, use familiar npm packages, and scale without assembling
+            a large collection of separate development tools.
           </p>
         </div>
 
-        <div class="cards">
+        <div class="feature-grid">
           <article class="card">
-            <div class="card-icon">1</div>
-            <h3>Lightweight</h3>
-            <p>No libraries, no frameworks, and no external assets required.</p>
+            <div class="card-icon">TS</div>
+            <div>
+              <h3>TypeScript built in</h3>
+              <p>Run TypeScript directly without installing a separate compiler or build tool.</p>
+            </div>
           </article>
 
           <article class="card">
-            <div class="card-icon">2</div>
-            <h3>Modern</h3>
-            <p>Soft gradients, glass-like surfaces, rounded cards, and clean typography.</p>
+            <div class="card-icon">npm</div>
+            <div>
+              <h3>Node compatible</h3>
+              <p>Use npm packages and bring many existing Node.js projects to Deno.</p>
+            </div>
           </article>
 
           <article class="card">
-            <div class="card-icon">3</div>
-            <h3>Flexible</h3>
-            <p>Use it as-is or adapt it into a landing page for almost any type of project.</p>
+            <div class="card-icon">✓</div>
+            <div>
+              <h3>Secure by default</h3>
+              <p>Network, file system, and environment access require explicit permission.</p>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section id="install">
       <div class="container">
-        <div class="cta">
-          <h2>Ready to build something simple?</h2>
-          <p>
-            Replace this text with your own message, update the links, and publish the file anywhere.
-          </p>
-          <a class="button" href="mailto:hello@example.com">Contact us</a>
+        <div class="install">
+          <div>
+            <h2>Install and start building.</h2>
+            <p>
+              Choose the command for your operating system, then create and run
+              your first JavaScript or TypeScript project.
+            </p>
+          </div>
+
+          <div class="code-box">
+            <div class="comment"># macOS and Linux</div>
+            <div class="command">curl -fsSL https://deno.land/install.sh | sh</div>
+            <br />
+            <div class="comment"># Windows PowerShell</div>
+            <div class="command">irm https://deno.land/install.ps1 | iex</div>
+            <br />
+            <div class="comment"># Confirm installation</div>
+            <div class="command">deno --version</div>
+          </div>
         </div>
       </div>
     </section>
@@ -563,8 +479,8 @@
 
   <footer>
     <div class="container footer-row">
-      <span>© 2026 Northstar. All rights reserved.</span>
-      <span>Made with plain HTML and CSS.</span>
+      <span>Static Deno introduction concept.</span>
+      <span>Deno is a trademark of its respective owner.</span>
     </div>
   </footer>
 </body>
