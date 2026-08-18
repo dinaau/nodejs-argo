@@ -1,486 +1,522 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A lightweight static introduction page for Deno." />
-  <title>Deno — Modern JavaScript Runtime</title>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Unofficial static CSUSB homepage-style mockup. All navigation links open the official CSUSB website." />
+  <title>California State University, San Bernardino | CSUSB</title>
   <style>
-    :root {
-      --background: #f7f6f2;
-      --surface: #ffffff;
-      --text: #111111;
-      --muted: #66645f;
-      --border: #d9d7d0;
-      --green: #a8e6b1;
-      --yellow: #f6dc75;
-      --orange: #f2a56f;
-      --radius-large: 30px;
-      --radius-medium: 20px;
+    :root{
+      --blue:#0068a9;
+      --blue-dark:#004d7e;
+      --blue-deep:#003b63;
+      --sky:#eaf6fc;
+      --ink:#102331;
+      --muted:#5c6b75;
+      --gold:#f6b940;
+      --paper:#ffffff;
+      --line:#dce6ec;
+      --shadow:0 18px 55px rgba(10,57,85,.14);
+      --radius:20px;
+      --max:1220px;
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:#fff;
+      font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    .wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .utility{
+      background:var(--blue-deep);
+      color:white;
+      font-size:13px;
+      letter-spacing:.01em;
+    }
+    .utility .wrap{
+      min-height:38px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+    }
+    .utility-links{display:flex;gap:20px;flex-wrap:wrap}
+    .utility a{opacity:.9}
+    .utility a:hover{opacity:1;text-decoration:underline}
+    header{
+      position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);
+      backdrop-filter:blur(14px);border-bottom:1px solid rgba(220,230,236,.8)
+    }
+    .nav{
+      min-height:86px;display:flex;align-items:center;justify-content:space-between;gap:24px
+    }
+    .brand{display:flex;align-items:center;gap:14px;min-width:265px}
+    .brand-mark{
+      width:58px;height:58px;border-radius:50%;
+      background:linear-gradient(145deg,var(--blue),var(--blue-deep));
+      color:#fff;display:grid;place-items:center;font-weight:900;font-size:17px;letter-spacing:.5px;
+      box-shadow:0 8px 22px rgba(0,104,169,.22)
+    }
+    .brand-copy strong{display:block;color:var(--blue-deep);font-size:20px;line-height:1}
+    .brand-copy span{display:block;color:#41525e;font-size:11px;text-transform:uppercase;letter-spacing:.11em;margin-top:7px}
+    nav{display:flex;align-items:center;gap:7px}
+    nav a{
+      padding:12px 11px;border-radius:10px;font-weight:700;font-size:14px;transition:.2s ease
+    }
+    nav a:hover{background:var(--sky);color:var(--blue-deep)}
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .search-btn,.menu-btn{
+      width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:#fff;
+      display:grid;place-items:center;cursor:pointer;color:var(--blue-deep)
+    }
+    .menu-btn{display:none}
+    .apply{
+      background:var(--blue);color:#fff!important;padding:12px 18px!important;border-radius:12px;
+      box-shadow:0 8px 20px rgba(0,104,169,.18)
+    }
+    .apply:hover{background:var(--blue-dark)!important}
+    .hero{
+      position:relative;overflow:hidden;
       background:
-        radial-gradient(circle at 15% 12%, rgba(168, 230, 177, 0.42), transparent 24rem),
-        radial-gradient(circle at 88% 22%, rgba(246, 220, 117, 0.34), transparent 22rem),
-        var(--background);
-      line-height: 1.5;
+        radial-gradient(circle at 75% 20%,rgba(255,255,255,.23),transparent 25%),
+        linear-gradient(115deg,#005d99 0%,#0076bd 52%,#58b8df 100%);
+      color:#fff;
     }
-
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(247, 246, 242, 0.88);
-      border-bottom: 1px solid rgba(17, 17, 17, 0.08);
-      backdrop-filter: blur(14px);
+    .hero:before{
+      content:"";position:absolute;width:620px;height:620px;border:90px solid rgba(255,255,255,.08);
+      border-radius:50%;right:-230px;top:-240px
     }
-
-    nav {
-      min-height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
+    .hero:after{
+      content:"";position:absolute;left:-80px;bottom:-130px;width:430px;height:240px;
+      background:linear-gradient(25deg,rgba(255,255,255,.12),transparent);transform:rotate(-10deg);border-radius:50%
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 1.2rem;
-      font-weight: 800;
-      letter-spacing: -0.04em;
+    .hero-grid{
+      min-height:590px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:30px;position:relative;z-index:2
     }
-
-    .logo {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border: 2px solid var(--text);
-      border-radius: 50%;
-      background: var(--surface);
-      font-size: 1.35rem;
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:13px;
+      text-transform:uppercase;letter-spacing:.13em;margin-bottom:18px
     }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      color: var(--muted);
-      font-size: 0.95rem;
-      font-weight: 600;
+    .eyebrow:before{content:"";width:34px;height:3px;border-radius:3px;background:var(--gold)}
+    h1{font-size:clamp(48px,6.4vw,84px);line-height:.95;letter-spacing:-.045em;margin:0 0 24px;max-width:780px}
+    .hero p{font-size:19px;line-height:1.65;max-width:680px;color:rgba(255,255,255,.9);margin:0 0 32px}
+    .hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      min-height:50px;padding:0 20px;border-radius:12px;font-weight:800;transition:.2s ease
     }
-
-    .nav-links a:hover { color: var(--text); }
-
-    .button {
-      min-height: 48px;
-      padding: 0 22px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid var(--text);
-      border-radius: 999px;
-      font-weight: 700;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    .btn-primary{background:#fff;color:var(--blue-deep)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.12)}
+    .btn-ghost{border:1px solid rgba(255,255,255,.5);color:#fff}
+    .btn-ghost:hover{background:rgba(255,255,255,.1)}
+    .hero-art{position:relative;height:560px;align-self:end}
+    .brush{
+      position:absolute;inset:auto 0 55px 0;height:320px;background:rgba(255,255,255,.92);
+      clip-path:polygon(4% 33%,15% 25%,20% 9%,36% 20%,47% 8%,56% 24%,79% 11%,72% 34%,98% 23%,87% 52%,96% 64%,73% 68%,76% 89%,50% 79%,37% 98%,30% 75%,7% 84%,17% 59%,0 51%);
+      filter:drop-shadow(0 24px 30px rgba(0,48,82,.18));
     }
-
-    .button:hover { transform: translateY(-2px); box-shadow: 5px 5px 0 var(--text); }
-    .button-dark { color: white; background: var(--text); }
-    .button-light { background: var(--surface); }
-
-    .hero { padding: 96px 0 70px; }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      align-items: center;
-      gap: 64px;
+    .student{
+      position:absolute;right:0;bottom:0;height:520px;width:auto;object-fit:contain;
+      filter:drop-shadow(0 20px 25px rgba(0,0,0,.15))
     }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      margin-bottom: 24px;
-      padding: 8px 14px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.7);
-      color: var(--muted);
-      font-size: 0.88rem;
-      font-weight: 700;
+    .hero-badge{
+      position:absolute;right:18px;top:70px;background:rgba(0,59,99,.9);border:1px solid rgba(255,255,255,.2);
+      border-radius:18px;padding:16px 18px;box-shadow:var(--shadow);backdrop-filter:blur(12px)
     }
-
-    .badge-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: #31a853;
-      box-shadow: 0 0 0 5px rgba(49, 168, 83, 0.12);
+    .hero-badge strong{font-size:28px;display:block;line-height:1}
+    .hero-badge span{font-size:12px;opacity:.8}
+    .quick-links{
+      position:relative;z-index:3;margin-top:-1px;background:#fff;border-bottom:1px solid var(--line)
     }
-
-    h1 {
-      max-width: 700px;
-      font-size: clamp(3.3rem, 7vw, 6.6rem);
-      line-height: 0.94;
-      letter-spacing: -0.075em;
+    .quick-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+    .quick-grid a{
+      padding:24px 28px;border-right:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;
+      font-weight:800;color:var(--blue-deep);transition:.2s
     }
-
-    .highlight { position: relative; display: inline-block; z-index: 0; }
-    .highlight::after {
-      content: "";
-      position: absolute;
-      left: -2%; right: -2%; bottom: 8%; height: 25%;
-      z-index: -1;
-      border-radius: 8px;
-      background: var(--green);
-      transform: rotate(-1.5deg);
+    .quick-grid a:first-child{border-left:1px solid var(--line)}
+    .quick-grid a:hover{background:var(--sky)}
+    .arrow{font-size:20px}
+    section{padding:88px 0}
+    .section-kicker{
+      color:var(--blue);font-weight:900;font-size:13px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px
     }
-
-    .hero-copy {
-      max-width: 620px;
-      margin-top: 26px;
-      color: var(--muted);
-      font-size: 1.12rem;
+    h2{font-size:clamp(34px,4.2vw,56px);line-height:1.05;letter-spacing:-.035em;margin:0 0 18px}
+    .lead{font-size:18px;color:var(--muted);max-width:700px;margin:0}
+    .stats{background:#f7fafc}
+    .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:46px}
+    .stat{
+      background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:0 8px 26px rgba(23,65,88,.05);
+      min-height:190px;display:flex;flex-direction:column;justify-content:space-between
     }
-
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
-    .terminal-wrap { position: relative; }
-    .shape { position: absolute; border: 2px solid var(--text); z-index: -1; }
-
-    .shape-one {
-      width: 130px; height: 130px; top: -36px; right: -26px;
-      border-radius: 50%; background: var(--yellow);
+    .stat .num{font-size:50px;font-weight:900;color:var(--blue);letter-spacing:-.05em;line-height:1}
+    .stat p{margin:18px 0 0;color:var(--muted);font-weight:650}
+    .application{
+      padding:0;background:#f7fafc
     }
-
-    .shape-two {
-      width: 95px; height: 95px; left: -34px; bottom: -28px;
-      border-radius: 26px; background: var(--orange); transform: rotate(12deg);
+    .app-card{
+      background:var(--blue-deep);color:#fff;border-radius:28px;overflow:hidden;
+      display:grid;grid-template-columns:1.4fr .6fr;box-shadow:var(--shadow)
     }
-
-    .terminal {
-      overflow: hidden;
-      border: 2px solid var(--text);
-      border-radius: var(--radius-large);
-      background: #151515;
-      color: #f6f6f2;
-      box-shadow: 12px 12px 0 var(--text);
+    .app-copy{padding:48px}
+    .app-copy h2{font-size:40px;margin-bottom:12px}
+    .app-copy p{color:rgba(255,255,255,.78);margin:0 0 26px;font-size:17px}
+    .app-side{
+      background:linear-gradient(145deg,var(--gold),#ffd778);color:#30230c;
+      display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:28px
     }
-
-    .terminal-header {
-      padding: 17px 20px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-bottom: 1px solid #363636;
-      background: #202020;
+    .app-side span{font-size:13px;text-transform:uppercase;letter-spacing:.11em;font-weight:900}
+    .app-side strong{font-size:44px;line-height:1;margin-top:8px}
+    .features-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+    .feature-visual{
+      min-height:480px;border-radius:30px;position:relative;overflow:hidden;
+      background:linear-gradient(145deg,#dff3fb,#87d0eb)
     }
-
-    .terminal-dot { width: 11px; height: 11px; border-radius: 50%; }
-    .terminal-dot.red { background: #ff6b64; }
-    .terminal-dot.yellow { background: #f6d365; }
-    .terminal-dot.green { background: #7ddf86; }
-    .terminal-title { margin-left: 8px; color: #aaa; font-size: 0.82rem; }
-
-    .terminal-body {
-      min-height: 390px;
-      padding: 30px;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 0.94rem;
-      line-height: 1.8;
+    .feature-visual img{
+      width:100%;height:100%;position:absolute;inset:0;object-fit:cover;mix-blend-mode:multiply;opacity:.86
     }
-
-    .terminal-body .muted { color: #888; }
-    .terminal-body .green { color: #9ee6a7; }
-    .terminal-body .yellow { color: #f5dc80; }
-    .terminal-body .blue { color: #8fc8ff; }
-    .terminal-body .prompt { color: #9ee6a7; font-weight: 700; }
-
-    .terminal-result {
-      margin-top: 24px;
-      padding: 18px;
-      border: 1px solid #3c3c3c;
-      border-radius: 14px;
-      background: #1c1c1c;
-      color: #d7d7d7;
+    .feature-visual:after{
+      content:"CSUSB";position:absolute;right:-22px;bottom:-28px;font-size:110px;font-weight:950;color:rgba(255,255,255,.72);letter-spacing:-.08em
     }
-
-    section { padding: 86px 0; }
-    .section-heading { max-width: 730px; margin-bottom: 42px; }
-
-    .section-heading span {
-      display: block;
-      margin-bottom: 12px;
-      color: var(--muted);
-      font-size: 0.86rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+    .feature-list{display:grid;gap:10px;margin-top:28px}
+    .feature-item{
+      padding:18px 0;border-bottom:1px solid var(--line);display:flex;gap:16px
     }
-
-    .section-heading h2 {
-      font-size: clamp(2.4rem, 5vw, 4.5rem);
-      line-height: 1;
-      letter-spacing: -0.06em;
+    .feature-icon{
+      flex:0 0 38px;height:38px;border-radius:10px;background:var(--sky);color:var(--blue);
+      display:grid;place-items:center;font-weight:900
     }
-
-    .section-heading p { margin-top: 18px; color: var(--muted); font-size: 1.05rem; }
-    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-
-    .card {
-      min-height: 270px;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border: 2px solid var(--text);
-      border-radius: var(--radius-medium);
-      background: var(--surface);
-      box-shadow: 7px 7px 0 var(--text);
-      transition: transform 0.2s ease;
+    .feature-item strong{display:block;margin-bottom:4px}
+    .feature-item span{color:var(--muted);font-size:14px}
+    .stories{background:linear-gradient(180deg,#fff,#eff8fc)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:42px}
+    .card{
+      background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:.25s;box-shadow:0 10px 28px rgba(18,60,84,.05)
     }
-
-    .card:hover { transform: translate(-3px, -3px); }
-    .card:nth-child(2) { background: var(--green); }
-    .card:nth-child(3) { background: var(--yellow); }
-
-    .card-icon {
-      width: 52px;
-      height: 52px;
-      display: grid;
-      place-items: center;
-      border: 2px solid var(--text);
-      border-radius: 16px;
-      background: var(--surface);
-      font-weight: 900;
-      font-size: 1.2rem;
+    .card:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(18,60,84,.12)}
+    .card-visual{height:210px;overflow:hidden;background:#dbeef7;position:relative}
+    .card-visual img{width:100%;height:100%;object-fit:cover}
+    .card-body{padding:25px}
+    .card-body small{color:var(--blue);font-weight:900;text-transform:uppercase;letter-spacing:.09em}
+    .card-body h3{font-size:22px;line-height:1.2;margin:10px 0}
+    .card-body p{color:var(--muted);margin:0 0 20px;font-size:15px}
+    .text-link{color:var(--blue);font-weight:850}
+    .news-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;margin-top:40px}
+    .news-feature{
+      border-radius:26px;background:linear-gradient(140deg,var(--blue-deep),var(--blue));color:#fff;padding:42px;min-height:380px;
+      display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden
     }
-
-    .card h3 { margin-top: 46px; font-size: 1.45rem; letter-spacing: -0.035em; }
-    .card p { margin-top: 10px; color: #4d4b47; }
-
-    .install {
-      display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      gap: 48px;
-      align-items: center;
-      padding: 48px;
-      border: 2px solid var(--text);
-      border-radius: var(--radius-large);
-      background: var(--surface);
-      box-shadow: 10px 10px 0 var(--text);
+    .news-feature:before{
+      content:"";position:absolute;right:-90px;top:-80px;width:330px;height:330px;border:55px solid rgba(255,255,255,.08);border-radius:50%
     }
-
-    .install h2 {
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      line-height: 1;
-      letter-spacing: -0.055em;
+    .news-feature small{opacity:.75;text-transform:uppercase;font-weight:800;letter-spacing:.08em}
+    .news-feature h3{font-size:34px;line-height:1.12;margin:12px 0 18px;max-width:700px}
+    .news-list{display:grid}
+    .news-item{padding:19px 0;border-bottom:1px solid var(--line)}
+    .news-item:first-child{padding-top:0}
+    .news-item time{font-size:12px;font-weight:850;color:var(--blue);text-transform:uppercase;letter-spacing:.07em}
+    .news-item h3{font-size:18px;line-height:1.3;margin:7px 0 0}
+    .cta-band{padding:62px 0;background:var(--blue);color:#fff}
+    .cta-row{display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .cta-row h2{font-size:42px;margin:0 0 8px}
+    .cta-row p{margin:0;color:rgba(255,255,255,.8)}
+    footer{background:#08293f;color:#fff;padding:60px 0 28px}
+    .footer-grid{display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:40px}
+    .footer-brand .brand-copy strong{color:#fff}
+    .footer-brand .brand-copy span{color:rgba(255,255,255,.6)}
+    footer h4{margin:0 0 14px;font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:#a9d8ef}
+    footer a{display:block;color:rgba(255,255,255,.77);padding:4px 0;font-size:14px}
+    footer a:hover{color:#fff;text-decoration:underline}
+    .address{color:rgba(255,255,255,.65);font-size:14px;margin-top:24px;line-height:1.7}
+    .footer-bottom{
+      margin-top:42px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);
+      display:flex;justify-content:space-between;gap:25px;color:rgba(255,255,255,.55);font-size:12px
     }
-
-    .install p { margin-top: 18px; color: var(--muted); }
-
-    .code-box {
-      padding: 24px;
-      overflow-x: auto;
-      border-radius: 18px;
-      background: #151515;
-      color: white;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 0.92rem;
-      line-height: 1.8;
+    .notice{max-width:760px}
+    .mobile-nav{display:none}
+    @media (max-width:1040px){
+      nav{display:none}.menu-btn{display:grid}
+      .hero-grid{grid-template-columns:1fr .8fr}
+      .student{height:450px}.hero-art{height:500px}
+      .stat-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:1.2fr 1fr 1fr}
+      .footer-grid>div:last-child{display:none}
     }
-
-    .code-box .comment { color: #858585; }
-    .code-box .command { color: #a8e6b1; }
-
-    footer { padding: 50px 0; color: var(--muted); font-size: 0.9rem; }
-    .footer-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
+    @media (max-width:760px){
+      .wrap{width:min(100% - 28px,var(--max))}
+      .utility .wrap{justify-content:center}.utility-links{display:none}
+      .nav{min-height:74px}.brand-mark{width:48px;height:48px;font-size:14px}
+      .brand-copy strong{font-size:17px}.brand-copy span{font-size:9px}
+      .apply{display:none}
+      .hero-grid{grid-template-columns:1fr;min-height:auto;padding-top:70px}
+      .hero-art{height:390px}.student{height:380px;right:50%;transform:translateX(50%)}
+      .hero-badge{right:0;top:30px}.brush{bottom:35px;height:260px}
+      h1{font-size:52px}.hero p{font-size:17px}
+      .quick-grid{grid-template-columns:1fr 1fr}.quick-grid a{padding:18px}
+      section{padding:68px 0}
+      .stat-grid,.cards,.features-grid,.news-grid{grid-template-columns:1fr}
+      .app-card{grid-template-columns:1fr}.app-copy{padding:34px}.app-side{align-items:flex-start;text-align:left}
+      .feature-visual{min-height:370px;order:2}
+      .cta-row{align-items:flex-start;flex-direction:column}
+      .footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:last-child{display:block}
+      .footer-brand{grid-column:1/-1}
+      .footer-bottom{flex-direction:column}
     }
-
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .hero-grid, .install { grid-template-columns: 1fr; }
-      .hero-grid { gap: 70px; }
-      .feature-grid { grid-template-columns: 1fr; }
-      .terminal-body { min-height: auto; }
-    }
-
-    @media (max-width: 560px) {
-      .container { width: min(100% - 24px, 1160px); }
-      .hero { padding-top: 70px; }
-      .terminal-body, .install { padding: 22px; }
-      .button { width: 100%; }
+    @media (max-width:480px){
+      .brand-copy span{display:none}
+      .search-btn{display:none}
+      h1{font-size:43px}
+      .hero-buttons .btn{width:100%}
+      .hero-art{height:335px}.student{height:330px}
+      .hero-badge{padding:12px 14px}.hero-badge strong{font-size:23px}
+      .quick-grid{grid-template-columns:1fr}
+      .quick-grid a{border-left:1px solid var(--line)}
+      .stat-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-brand{grid-column:auto}
     }
   </style>
 </head>
-
 <body>
+  <div class="utility">
+    <div class="wrap">
+      <span>California State University, San Bernardino</span>
+      <div class="utility-links">
+        <a href="https://www.csusb.edu/current-students" target="_blank" rel="noopener">Current Students</a>
+        <a href="https://www.csusb.edu/faculty-staff" target="_blank" rel="noopener">Faculty & Staff</a>
+        <a href="https://www.csusb.edu/alumni" target="_blank" rel="noopener">Alumni</a>
+        <a href="https://www.csusb.edu/about-csusb/contact-csusb" target="_blank" rel="noopener">Contact</a>
+      </div>
+    </div>
+  </div>
+
   <header>
-    <div class="container">
-      <nav>
-        <a class="brand" href="#top" aria-label="Deno home">
-          <span class="logo">◉</span>
-          <span>Deno</span>
-        </a>
-
-        <div class="nav-links">
-          <a href="#features">Runtime</a>
-          <a href="#install">Install</a>
-          <a href="https://docs.deno.com/" target="_blank" rel="noopener">Docs</a>
-          <a href="https://github.com/denoland/deno" target="_blank" rel="noopener">GitHub</a>
+    <div class="wrap nav">
+      <a class="brand" href="https://www.csusb.edu/" target="_blank" rel="noopener" aria-label="Open official CSUSB website">
+        <div class="brand-mark">CSUSB</div>
+        <div class="brand-copy">
+          <strong>Cal State San Bernardino</strong>
+          <span>Define Your Future</span>
         </div>
+      </a>
 
-        <a class="button button-dark" href="#install">Get started</a>
+      <nav aria-label="Main navigation">
+        <a href="https://www.csusb.edu/about-csusb" target="_blank" rel="noopener">About</a>
+        <a href="https://www.csusb.edu/academics" target="_blank" rel="noopener">Academics</a>
+        <a href="https://www.csusb.edu/join-the-pack" target="_blank" rel="noopener">Admissions</a>
+        <a href="https://www.csusb.edu/current-students" target="_blank" rel="noopener">Student Life</a>
+        <a href="https://www.csusb.edu/inside" target="_blank" rel="noopener">News</a>
       </nav>
+
+      <div class="nav-actions">
+        <a class="search-btn" href="https://www.csusb.edu/search" target="_blank" rel="noopener" aria-label="Search official CSUSB site">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </a>
+        <a class="apply" href="https://www.calstate.edu/apply" target="_blank" rel="noopener">Apply Now</a>
+        <a class="menu-btn" href="https://www.csusb.edu/" target="_blank" rel="noopener" aria-label="Open official website menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </a>
+      </div>
     </div>
   </header>
 
-  <main id="top">
+  <main>
     <section class="hero">
-      <div class="container hero-grid">
+      <div class="wrap hero-grid">
         <div>
-          <div class="badge">
-            <span class="badge-dot"></span>
-            JavaScript and TypeScript runtime
-          </div>
-
-          <h1>
-            JavaScript,
-            <span class="highlight">uncomplicated.</span>
-          </h1>
-
-          <p class="hero-copy">
-            Deno is a modern, open-source runtime with TypeScript support,
-            npm compatibility, secure defaults, and the tools you need built in.
-          </p>
-
-          <div class="hero-actions">
-            <a class="button button-dark" href="#install">Install Deno</a>
-            <a class="button button-light" href="https://docs.deno.com/" target="_blank" rel="noopener">Read the docs</a>
+          <div class="eyebrow">California State University, San Bernardino</div>
+          <h1>Empowering<br>Bold Futures.</h1>
+          <p>Discover a welcoming university community where access meets excellence, ambition becomes opportunity, and students are equipped to shape what comes next.</p>
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="https://www.csusb.edu/join-the-pack" target="_blank" rel="noopener">Explore CSUSB <span>→</span></a>
+            <a class="btn btn-ghost" href="https://www.csusb.edu/join-the-pack/future-students/explore-csusb/campus-tours" target="_blank" rel="noopener">Schedule a Tour</a>
           </div>
         </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="brush"></div>
+          <img class="student" src="https://www.csusb.edu/sites/default/files/upload/image/2025/hp_subject2.png" alt="">
+          <div class="hero-badge"><strong>#2</strong><span>for Social Mobility</span></div>
+        </div>
+      </div>
+    </section>
 
-        <div class="terminal-wrap">
-          <div class="shape shape-one"></div>
-          <div class="shape shape-two"></div>
+    <div class="quick-links">
+      <div class="wrap quick-grid">
+        <a href="https://www.csusb.edu/join-the-pack" target="_blank" rel="noopener"><span>Admissions</span><span class="arrow">→</span></a>
+        <a href="https://www.csusb.edu/academics" target="_blank" rel="noopener"><span>Explore Programs</span><span class="arrow">→</span></a>
+        <a href="https://www.csusb.edu/join-the-pack/future-students/cost-attendance" target="_blank" rel="noopener"><span>Cost & Aid</span><span class="arrow">→</span></a>
+        <a href="https://www.csusb.edu/request-for-information" target="_blank" rel="noopener"><span>Request Info</span><span class="arrow">→</span></a>
+      </div>
+    </div>
 
-          <div class="terminal">
-            <div class="terminal-header">
-              <span class="terminal-dot red"></span>
-              <span class="terminal-dot yellow"></span>
-              <span class="terminal-dot green"></span>
-              <span class="terminal-title">hello.ts</span>
-            </div>
+    <section class="stats">
+      <div class="wrap">
+        <div class="section-kicker">Why CSUSB</div>
+        <h2>Opportunity starts here.</h2>
+        <p class="lead">A student-first university experience built around access, value, career-ready programs and a community where first-generation students thrive.</p>
+        <div class="stat-grid">
+          <a class="stat" href="https://www.csusb.edu/join-the-pack/future-students/explore-csusb/why-choose-csusb" target="_blank" rel="noopener">
+            <div class="num">#2</div><p>National recognition for social mobility</p>
+          </a>
+          <a class="stat" href="https://www.csusb.edu/join-the-pack/future-students/explore-csusb/why-choose-csusb" target="_blank" rel="noopener">
+            <div class="num">78%</div><p>First-generation students</p>
+          </a>
+          <a class="stat" href="https://www.csusb.edu/academics" target="_blank" rel="noopener">
+            <div class="num">70+</div><p>Majors and concentrations to explore</p>
+          </a>
+          <a class="stat" href="https://www.csusb.edu/join-the-pack/future-students/cost-attendance" target="_blank" rel="noopener">
+            <div class="num">78%</div><p>Students receiving grants and scholarships</p>
+          </a>
+        </div>
+      </div>
+    </section>
 
-            <div class="terminal-body">
-              <div><span class="blue">Deno</span>.<span class="yellow">serve</span>(() =&gt; {</div>
-              <div>&nbsp;&nbsp;<span class="green">return</span> new Response(</div>
-              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="yellow">"Hello from Deno!"</span></div>
-              <div>&nbsp;&nbsp;);</div>
-              <div>});</div>
-
-              <br />
-
-              <div><span class="prompt">$</span> deno run --allow-net hello.ts</div>
-
-              <div class="terminal-result">
-                <span class="muted">Listening on</span><br />
-                <span class="green">http://localhost:8000/</span>
-              </div>
-            </div>
+    <section class="application">
+      <div class="wrap">
+        <div class="app-card">
+          <div class="app-copy">
+            <div class="section-kicker" style="color:#7fd3f3">Your next chapter</div>
+            <h2>Spring 2027 applications are open.</h2>
+            <p>Take the next step toward becoming a Coyote. Visit the official application portal for requirements, deadlines and application details.</p>
+            <a class="btn btn-primary" href="https://www.calstate.edu/apply" target="_blank" rel="noopener">Apply for Spring 2027 →</a>
+          </div>
+          <div class="app-side">
+            <span>Application deadline</span>
+            <strong>SEP 30</strong>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="features">
-      <div class="container">
-        <div class="section-heading">
-          <span>One runtime, less setup</span>
-          <h2>Everything you need is already included.</h2>
-          <p>
-            Start small, use familiar npm packages, and scale without assembling
-            a large collection of separate development tools.
-          </p>
+    <section>
+      <div class="wrap features-grid">
+        <div class="feature-visual">
+          <img src="https://www.csusb.edu/sites/default/files/upload/image/2025/hp_subject2.png" alt="CSUSB student">
         </div>
-
-        <div class="feature-grid">
-          <article class="card">
-            <div class="card-icon">TS</div>
-            <div>
-              <h3>TypeScript built in</h3>
-              <p>Run TypeScript directly without installing a separate compiler or build tool.</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">npm</div>
-            <div>
-              <h3>Node compatible</h3>
-              <p>Use npm packages and bring many existing Node.js projects to Deno.</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">✓</div>
-            <div>
-              <h3>Secure by default</h3>
-              <p>Network, file system, and environment access require explicit permission.</p>
-            </div>
-          </article>
+        <div>
+          <div class="section-kicker">Choose CSUSB</div>
+          <h2>A campus built around your future.</h2>
+          <p class="lead">From career-focused academics to a supportive campus community, CSUSB offers the tools, people and experiences to help students move forward with confidence.</p>
+          <div class="feature-list">
+            <a class="feature-item" href="https://www.csusb.edu/join-the-pack/future-students/explore-csusb/why-choose-csusb" target="_blank" rel="noopener">
+              <div class="feature-icon">01</div><div><strong>National Recognition</strong><span>Explore rankings, outcomes and the value of a CSUSB education.</span></div>
+            </a>
+            <a class="feature-item" href="https://www.csusb.edu/academics" target="_blank" rel="noopener">
+              <div class="feature-icon">02</div><div><strong>Programs That Matter</strong><span>Find programs aligned with the careers and industries shaping tomorrow.</span></div>
+            </a>
+            <a class="feature-item" href="https://www.csusb.edu/current-students" target="_blank" rel="noopener">
+              <div class="feature-icon">03</div><div><strong>Life as a Coyote</strong><span>Discover clubs, housing, wellness, events and student support.</span></div>
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="install">
-      <div class="container">
-        <div class="install">
-          <div>
-            <h2>Install and start building.</h2>
-            <p>
-              Choose the command for your operating system, then create and run
-              your first JavaScript or TypeScript project.
-            </p>
-          </div>
+    <section class="stories">
+      <div class="wrap">
+        <div class="section-kicker">Connect with CSUSB</div>
+        <h2>Experience life as a Coyote.</h2>
+        <p class="lead">Explore the campus, connect with the community and see what makes Cal State San Bernardino a place where students can belong and succeed.</p>
+        <div class="cards">
+          <a class="card" href="https://www.csusb.edu/join-the-pack/future-students/explore-csusb/campus-tours" target="_blank" rel="noopener">
+            <div class="card-visual" style="background:linear-gradient(140deg,#dff3fa,#7ec8e4);display:grid;place-items:center">
+              <div style="font-size:68px">⌖</div>
+            </div>
+            <div class="card-body"><small>Visit</small><h3>Explore Our Campus</h3><p>Tour classrooms, student spaces and the places Coyotes call home.</p><span class="text-link">Schedule a tour →</span></div>
+          </a>
+          <a class="card" href="https://www.csusb.edu/housing" target="_blank" rel="noopener">
+            <div class="card-visual" style="background:linear-gradient(140deg,#f4d8a1,#f6b940);display:grid;place-items:center">
+              <div style="font-size:68px">⌂</div>
+            </div>
+            <div class="card-body"><small>Housing</small><h3>Live With the Pack</h3><p>Learn about on-campus housing, residential life and your home at CSUSB.</p><span class="text-link">Explore housing →</span></div>
+          </a>
+          <a class="card" href="https://www.csusb.edu/request-for-information" target="_blank" rel="noopener">
+            <div class="card-visual" style="background:linear-gradient(140deg,#d7e4f1,#8aaac5);display:grid;place-items:center">
+              <div style="font-size:68px">✦</div>
+            </div>
+            <div class="card-body"><small>Connect</small><h3>Join the Pack</h3><p>Get admissions information and resources for your path to CSUSB.</p><span class="text-link">Request info →</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
 
-          <div class="code-box">
-            <div class="comment"># macOS and Linux</div>
-            <div class="command">curl -fsSL https://deno.land/install.sh | sh</div>
-            <br />
-            <div class="comment"># Windows PowerShell</div>
-            <div class="command">irm https://deno.land/install.ps1 | iex</div>
-            <br />
-            <div class="comment"># Confirm installation</div>
-            <div class="command">deno --version</div>
+    <section>
+      <div class="wrap">
+        <div class="section-kicker">What's happening</div>
+        <h2>What we're up to.</h2>
+        <div class="news-grid">
+          <a class="news-feature" href="https://www.csusb.edu/inside" target="_blank" rel="noopener">
+            <small>CSUSB News</small>
+            <h3>Discover the people, programs and ideas moving the Coyote community forward.</h3>
+            <span class="text-link" style="color:white">View all news →</span>
+          </a>
+          <div class="news-list">
+            <a class="news-item" href="https://www.csusb.edu/inside" target="_blank" rel="noopener">
+              <time>August 17, 2026</time><h3>Coyote BLUE-PRIME gives Inland Empire high school students a head start on college</h3>
+            </a>
+            <a class="news-item" href="https://www.csusb.edu/inside" target="_blank" rel="noopener">
+              <time>August 17, 2026</time><h3>Coyote Launchpad helps new students build connections and prepare for life at CSUSB</h3>
+            </a>
+            <a class="news-item" href="https://www.csusb.edu/inside" target="_blank" rel="noopener">
+              <time>August 13, 2026</time><h3>CSUSB educator receives regional recognition</h3>
+            </a>
+            <a class="news-item" href="https://www.csusb.edu/inside" target="_blank" rel="noopener">
+              <time>More stories</time><h3>Visit the official CSUSB News site for the latest campus updates →</h3>
+            </a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="wrap cta-row">
+        <div><h2>Ready to define your future?</h2><p>Explore admissions, visit campus or start your application on the official CSUSB website.</p></div>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="https://www.csusb.edu/join-the-pack" target="_blank" rel="noopener">Admissions</a>
+          <a class="btn btn-ghost" href="https://www.calstate.edu/apply" target="_blank" rel="noopener">Apply Now</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container footer-row">
-      <span>Static Deno introduction concept.</span>
-      <span>Deno is a trademark of its respective owner.</span>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="https://www.csusb.edu/" target="_blank" rel="noopener">
+            <div class="brand-mark">CSUSB</div>
+            <div class="brand-copy"><strong>Cal State San Bernardino</strong><span>California State University</span></div>
+          </a>
+          <div class="address">
+            5500 University Parkway<br>San Bernardino, CA 92407<br>+1 (909) 537-5000
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <a href="https://www.csusb.edu/about-csusb" target="_blank" rel="noopener">About CSUSB</a>
+          <a href="https://www.csusb.edu/academics" target="_blank" rel="noopener">Academics</a>
+          <a href="https://www.csusb.edu/join-the-pack" target="_blank" rel="noopener">Admissions</a>
+          <a href="https://www.csusb.edu/current-students" target="_blank" rel="noopener">Student Resources</a>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <a href="https://www.csusb.edu/join-the-pack/future-students/explore-csusb/campus-tours" target="_blank" rel="noopener">Campus Tours</a>
+          <a href="https://www.csusb.edu/request-for-information" target="_blank" rel="noopener">Request Information</a>
+          <a href="https://www.csusb.edu/housing" target="_blank" rel="noopener">Housing</a>
+          <a href="https://www.csusb.edu/inside" target="_blank" rel="noopener">News</a>
+        </div>
+        <div>
+          <h4>Official Site</h4>
+          <a href="https://www.csusb.edu/" target="_blank" rel="noopener">csusb.edu</a>
+          <a href="https://www.calstate.edu/apply" target="_blank" rel="noopener">Cal State Apply</a>
+          <a href="https://www.csusb.edu/about-csusb/contact-csusb" target="_blank" rel="noopener">Contact CSUSB</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="notice">Unofficial static homepage-style mockup. This file does not proxy, collect, submit or intercept any CSUSB data. All functional links open official CSUSB / Cal State pages.</div>
+        <div>Static HTML mockup</div>
+      </div>
     </div>
   </footer>
 </body>
