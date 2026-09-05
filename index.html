@@ -7,250 +7,399 @@
 <meta name="description" content="Lakehead University">
 <style>
 :root{
-  --red:#b51f2e;
-  --red2:#8f1722;
-  --gold:#f0b323;
-  --ink:#1a1a1a;
-  --navy:#1e2a34;
-  --paper:#fff;
-  --soft:#f4f2ef;
-  --muted:#616161;
-  --line:#d8d5d2;
+  --cobalt:#005a8b;
+  --cobalt-dark:#00446f;
+  --blaze:#ffc20e;
+  --ink:#252525;
+  --light:#f3f3f1;
+  --line:#d6d6d3;
   --max:1320px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  margin:0;background:#fff;color:var(--ink);
-  font-family:Arial,Helvetica,sans-serif;
-  -webkit-font-smoothing:antialiased;
-}
+body{margin:0;color:var(--ink);background:#fff;font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
-.wrap{width:min(var(--max),calc(100% - 52px));margin:auto}
+.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
 
-/* top */
-.topbar{background:#191919;color:#fff;font-size:12px}
-.topbar .wrap{height:39px;display:flex;align-items:center;justify-content:space-between;gap:28px}
-.top-left,.top-right{display:flex;align-items:center;gap:24px}
-.topbar a{color:#ddd}
-.topbar a:hover{color:#fff;text-decoration:underline}
-
-/* masthead */
-.masthead{background:#fff;border-bottom:1px solid #ddd}
-.brandrow{height:100px;display:flex;align-items:center;justify-content:space-between;gap:28px}
-.brand{display:flex;align-items:center;gap:15px}
-.crest{
-  width:58px;height:68px;background:linear-gradient(#b51f2e 0 33%,#f0b323 33% 47%,#1e2a34 47% 100%);
-  border-radius:4px 4px 11px 11px;position:relative;overflow:hidden;border:1px solid #ccc
+/* very top */
+.topbar{
+  background:var(--cobalt-dark);
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.18);
 }
-.crest:before,.crest:after{content:"";position:absolute;left:8px;right:8px;height:5px;background:#fff;border-radius:50%}
-.crest:before{bottom:16px;transform:rotate(4deg)}.crest:after{bottom:7px;transform:rotate(-4deg)}
-.brandcopy strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:31px;line-height:1;font-weight:700;letter-spacing:-.03em}
-.brandcopy span{display:block;margin-top:8px;font-size:10px;text-transform:uppercase;letter-spacing:.17em;color:#666}
-.headtools{display:flex;align-items:center;gap:17px;font-size:13px;font-weight:700}
-.headtools>a:not(.apply):hover{color:var(--red)}
-.apply{background:var(--red);color:#fff!important;padding:13px 18px;text-transform:uppercase;letter-spacing:.05em}
-.apply:hover{background:var(--red2)!important}
-.search{width:42px;height:42px;border:1px solid #aaa;display:grid;place-items:center;font-size:20px}
-.mobilemenu{display:none}
+.topbar .wrap{
+  min-height:36px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:26px;
+  font-size:12px;
+  font-weight:700;
+}
+.campuses{letter-spacing:.06em;text-transform:uppercase}
+.toplinks{display:flex;align-items:center;gap:24px}
+.toplinks a{opacity:.94}
+.toplinks a:hover{text-decoration:underline}
+.toplinks .apply{
+  border:1px solid rgba(255,255,255,.65);
+  padding:6px 10px;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
 
-/* nav */
-.mainnav{border-top:1px solid #ece9e6;background:#fff}
-.mainnav .wrap{min-height:61px;display:flex;align-items:center;justify-content:center;gap:39px}
+/* hero / integrated header */
+.hero{
+  position:relative;
+  min-height:690px;
+  overflow:hidden;
+  color:#fff;
+  background:#4a4a4a;
+}
+.hero-bg{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+}
+.hero:after{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to bottom,rgba(0,0,0,.54) 0,rgba(0,0,0,.13) 32%,rgba(0,0,0,.1) 56%,rgba(0,0,0,.64) 100%);
+}
+.hero-header{
+  position:relative;z-index:4;
+  border-bottom:1px solid rgba(255,255,255,.35);
+}
+.hero-headrow{
+  min-height:106px;
+  display:flex;align-items:center;justify-content:space-between;gap:30px;
+}
+.logo{
+  display:flex;align-items:center;gap:15px;
+}
+.shield{
+  width:54px;height:63px;border-radius:2px 2px 10px 10px;overflow:hidden;
+  background:linear-gradient(#c9202f 0 33%,#ffc20e 33% 47%,#fff 47% 56%,#005a8b 56% 100%);
+  box-shadow:0 0 0 1px rgba(255,255,255,.25);
+}
+.logotype{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:34px;
+  line-height:.92;
+  font-weight:700;
+  letter-spacing:-.025em;
+}
+.logotype span{
+  display:block;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:11px;
+  letter-spacing:.34em;
+  margin-top:10px;
+  text-transform:uppercase;
+}
+.search{
+  width:42px;height:42px;
+  border:1px solid rgba(255,255,255,.7);
+  display:grid;place-items:center;
+  font-size:22px;
+  background:rgba(0,0,0,.14);
+}
+.mainnav{
+  position:relative;z-index:4;
+  border-bottom:1px solid rgba(255,255,255,.26);
+}
+.mainnav .wrap{
+  min-height:58px;
+  display:flex;align-items:center;justify-content:flex-end;gap:38px;
+}
 .mainnav a{
-  min-height:61px;display:flex;align-items:center;
-  font-size:14px;font-weight:800;
-  border-bottom:4px solid transparent
+  min-height:58px;
+  display:flex;align-items:center;
+  font-size:13px;font-weight:700;
+  border-bottom:4px solid transparent;
 }
-.mainnav a:hover{color:var(--red);border-color:var(--red)}
-
-/* hero */
-.hero{position:relative;min-height:640px;color:#fff;overflow:hidden;background:#222}
-.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.58) 42%,rgba(0,0,0,.08) 78%)}
-.hero .wrap{position:relative;z-index:2;min-height:640px;display:flex;align-items:center}
-.herocopy{width:min(690px,62%);padding:60px 0}
-.eyebrow{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:#ffd975;margin-bottom:17px}
-h1,h2,h3{font-family:Georgia,"Times New Roman",serif}
-h1{font-size:clamp(58px,7vw,100px);line-height:.88;letter-spacing:-.055em;margin:0 0 24px}
-.hero p{font-size:20px;line-height:1.55;max-width:620px;margin:0 0 30px;color:#f4f4f4}
-.btn{
-  min-height:49px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;
-  font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;border:2px solid transparent
+.mainnav a:hover{border-bottom-color:var(--blaze)}
+.mobile{display:none}
+.hero-content{
+  position:relative;z-index:3;
+  min-height:525px;
+  display:flex;align-items:flex-end;
+  padding-bottom:88px;
 }
-.btn-red{background:var(--red);color:#fff}
-.btn-red:hover{background:var(--red2)}
-.btn-outline{border-color:#fff;color:#fff;margin-left:8px}
-.btn-outline:hover{background:#fff;color:#111}
-
-/* quick */
-.quick{border-bottom:1px solid #111;background:#fff}
-.quickgrid{display:grid;grid-template-columns:repeat(4,1fr)}
-.quick a{
-  min-height:118px;padding:25px 26px;border-right:1px solid #111;
-  display:flex;flex-direction:column;justify-content:space-between
+.hero-copy{width:min(720px,72%)}
+.hero-tag{
+  width:min(485px,86%);
+  margin-bottom:21px;
 }
-.quick a:first-child{border-left:1px solid #111}
-.quick a:hover{background:#111;color:#fff}
-.quick small{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:var(--red)}
-.quick a:hover small{color:#ff9aaa}
-.quick strong{font:700 25px/1.05 Georgia,"Times New Roman",serif}
-.quick i{font-style:normal;font-size:20px}
+.hero-tag img{width:100%;height:auto}
+.hero h1{
+  margin:0 0 17px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(44px,5.2vw,72px);
+  line-height:.98;
+  letter-spacing:-.035em;
+}
+.hero p{
+  font-size:20px;line-height:1.48;
+  margin:0 0 26px;
+  max-width:700px;
+}
+.cta{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:52px;padding:0 22px;
+  background:var(--blaze);color:#161616;
+  font-size:14px;font-weight:900;
+}
+.cta:hover{background:#ffd044}
+.hero-dots{
+  position:absolute;z-index:5;right:34px;bottom:35px;
+  display:flex;gap:9px
+}
+.hero-dots i{display:block;width:9px;height:9px;border-radius:50%;border:1px solid #fff}
+.hero-dots i:first-child{background:#fff}
 
-/* sections */
-.section{padding:88px 0}
-.kicker{color:var(--red);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.14em;margin-bottom:12px}
-h2{font-size:clamp(45px,5.2vw,70px);line-height:.96;letter-spacing:-.045em;margin:0 0 20px}
-.lead{font-size:18px;line-height:1.65;color:var(--muted);max-width:760px;margin:0}
-.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:38px}
-.sectionhead h2{margin:0}
-.textlink{color:var(--red);font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid var(--red);padding-bottom:4px}
+/* hero tabs */
+.hero-tabs{
+  position:relative;
+  margin-top:-42px;
+  z-index:7;
+}
+.tabgrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  background:#fff;
+  box-shadow:0 3px 12px rgba(0,0,0,.15);
+}
+.tab{
+  min-height:84px;
+  padding:19px 24px;
+  border-right:1px solid #ddd;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:18px;
+  font-weight:700;
+}
+.tab:first-child{border-top:5px solid var(--cobalt)}
+.tab:nth-child(2){border-top:5px solid var(--blaze)}
+.tab:nth-child(3){border-top:5px solid #777}
+.tab:hover{background:#f7f7f5}
 
-/* Thunderwolves */
-.wolves{background:var(--soft)}
-.wolvesgrid{display:grid;grid-template-columns:1.02fr .98fr;gap:62px;align-items:center}
-.wolvesphoto{height:550px;overflow:hidden}
-.wolvesphoto img{width:100%;height:100%;object-fit:cover}
-.wolvestext p{font-size:18px;line-height:1.65;color:#525252;margin:0 0 24px}
-.points{display:grid;gap:0;margin-top:28px;border-top:1px solid #111}
-.point{display:grid;grid-template-columns:56px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid #111}
-.point .num{font:700 31px/1 Georgia,serif;color:var(--red)}
-.point strong{display:block;font-size:16px;line-height:1.35}
+/* generic */
+section{padding:82px 0}
+.section-title{
+  margin:0 0 34px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:48px;
+  line-height:1;
+  color:var(--cobalt);
+}
+.rule{
+  width:58px;height:5px;background:var(--blaze);
+  margin:0 0 28px;
+}
+
+/* thunderwolves */
+.wolves{
+  padding-top:112px;
+}
+.wolves-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:58px;align-items:start
+}
+.wolves-copy p{
+  font-size:17px;line-height:1.65;color:#555;margin:0 0 22px
+}
+.wolves-points{
+  display:grid;gap:18px;margin-top:28px
+}
+.wolf-point{
+  display:grid;grid-template-columns:28px 1fr;gap:13px;
+  font-size:16px;line-height:1.5
+}
+.wolf-point:before{
+  content:"";
+  width:18px;height:18px;
+  border-radius:50%;
+  border:5px solid var(--blaze);
+  margin-top:3px;
+}
+.wolves-media{
+  position:relative;
+  height:460px;
+  overflow:hidden;
+  background:#ddd;
+}
+.wolves-media img{width:100%;height:100%;object-fit:cover}
+.play{
+  position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);
+  width:72px;height:72px;border-radius:50%;
+  background:rgba(0,90,139,.9);color:#fff;
+  display:grid;place-items:center;font-size:26px;
+}
 
 /* explore */
-.explore{background:#fff}
-.audience{display:flex;align-items:center;gap:14px;margin:26px 0 40px}
-.audience span{font-size:15px;font-weight:700}
-.audience select{min-width:260px;height:48px;border:1px solid #222;background:#fff;padding:0 14px;font-size:15px}
-.exploregrid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #111;border-left:1px solid #111}
-.explorecard{
-  min-height:265px;padding:28px;border-right:1px solid #111;border-bottom:1px solid #111;
-  display:flex;flex-direction:column;justify-content:space-between;background:#fff
+.explore{background:#f5f5f4}
+.explore-top{
+  display:flex;align-items:center;gap:15px;margin-bottom:34px
 }
-.explorecard:nth-child(2),.explorecard:nth-child(5){background:#f5f3f0}
-.explorecard:hover{background:var(--red);color:#fff}
-.explorecard .n{font-size:11px;font-weight:900;letter-spacing:.12em;color:#777}
-.explorecard:hover .n{color:#ffd7dc}
-.explorecard h3{font-size:26px;line-height:1.08;margin:0 0 11px}
-.explorecard p{font-size:14px;line-height:1.5;color:#626262;margin:0}
-.explorecard:hover p{color:#f1dfe2}
-.explorecard .arr{font-size:22px}
-
-/* campus split */
-.campus{background:#1d2933;color:#fff;padding:0}
-.campusgrid{display:grid;grid-template-columns:1fr 1fr;min-height:580px}
-.campusphoto{position:relative;overflow:hidden}
-.campusphoto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.campuscopy{padding:74px 68px;display:flex;flex-direction:column;justify-content:center}
-.campuscopy .kicker{color:#ffd36e}
-.campuscopy p{font-size:18px;line-height:1.65;color:#d9e0e5;margin:0 0 27px}
+.explore-top label{font-size:17px;font-weight:700}
+.explore-top select{
+  width:275px;height:48px;padding:0 13px;
+  border:1px solid #999;background:#fff;font-size:15px
+}
+.explore-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px
+}
+.ex-card{
+  background:#fff;border:1px solid #ddd;
+  min-height:215px;padding:27px;
+  display:flex;flex-direction:column;
+  box-shadow:0 1px 2px rgba(0,0,0,.03)
+}
+.ex-card h3{
+  margin:0 0 12px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:25px;color:var(--cobalt)
+}
+.ex-card p{margin:0;color:#666;line-height:1.5;font-size:14px}
+.ex-card a{margin-top:auto;padding-top:25px;color:var(--cobalt);font-weight:800;font-size:13px}
+.ex-card a:hover{text-decoration:underline}
 
 /* news */
-.newsgrid{display:grid;grid-template-columns:1.2fr .9fr .9fr;border-top:1px solid #111;border-left:1px solid #111}
-.newscard{border-right:1px solid #111;border-bottom:1px solid #111;background:#fff}
-.newspic{aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid #111;background:#ddd}
-.newspic img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
-.newscard:hover img{transform:scale(1.018)}
-.newsbody{padding:24px}
-.newsdate{color:var(--red);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.09em;margin-bottom:10px}
-.newsbody h3{font-size:23px;line-height:1.15;margin:0 0 9px}
-.newscard:first-child h3{font-size:31px}
-.newsbody p{font-size:14px;line-height:1.5;color:#666;margin:0}
-.newscard:hover h3{color:var(--red)}
+.news-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:25px
+}
+.news-card{border-top:6px solid var(--cobalt)}
+.news-img{aspect-ratio:16/9;overflow:hidden;background:#ddd}
+.news-img img{width:100%;height:100%;object-fit:cover}
+.news-date{color:#777;font-size:12px;margin-top:18px}
+.news-card h3{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:22px;line-height:1.18;
+  color:var(--cobalt);margin:8px 0 9px
+}
+.news-card p{font-size:14px;color:#666;line-height:1.5;margin:0}
+.more{
+  display:inline-block;margin-top:28px;
+  color:var(--cobalt);font-weight:800;font-size:13px;
+  border-bottom:2px solid var(--blaze);padding-bottom:4px
+}
 
 /* events */
-.events{background:#f3f3f2}
-.eventgrid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #111;border-left:1px solid #111}
-.event{min-height:280px;padding:27px;border-right:1px solid #111;border-bottom:1px solid #111;background:#fff;display:flex;flex-direction:column}
-.eventdate{color:var(--red);font:700 13px/1 Arial,sans-serif;text-transform:uppercase;letter-spacing:.11em;margin-bottom:30px}
-.eventdate strong{display:block;font:700 42px/1 Georgia,serif;margin-top:4px}
-.event h3{font-size:21px;line-height:1.12;margin:0 0 13px}
-.event p{font-size:13px;line-height:1.55;color:#666;margin:0 0 20px}
-.event a{margin-top:auto;color:var(--red);font-size:12px;font-weight:900;text-transform:uppercase}
+.events{background:var(--cobalt);color:#fff}
+.events .section-title{color:#fff}
+.event-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid rgba(255,255,255,.45);
+  border-left:1px solid rgba(255,255,255,.45);
+}
+.event{
+  padding:24px;
+  min-height:235px;
+  border-right:1px solid rgba(255,255,255,.45);
+  border-bottom:1px solid rgba(255,255,255,.45);
+  display:flex;flex-direction:column
+}
+.event-date{
+  display:flex;align-items:baseline;gap:7px;
+  color:var(--blaze);font-weight:900;text-transform:uppercase;
+  margin-bottom:20px
+}
+.event-date strong{font-family:Georgia,"Times New Roman",serif;font-size:33px}
+.event h3{
+  margin:0 0 12px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:20px;line-height:1.2
+}
+.event p{font-size:13px;line-height:1.5;color:#d9e7ef;margin:0 0 18px}
+.event a{margin-top:auto;font-size:12px;font-weight:800;color:#fff;text-decoration:underline}
 
-/* virtual tours */
+/* virtual */
 .tours{background:#fff}
-.tourgrid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #111;border-left:1px solid #111}
+.tour-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px
+}
 .tour{
-  min-height:360px;border-right:1px solid #111;border-bottom:1px solid #111;
-  position:relative;overflow:hidden;color:#fff
+  height:360px;position:relative;overflow:hidden;color:#fff
 }
 .tour img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.tour:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.74),rgba(0,0,0,.08) 62%)}
-.tourcopy{position:absolute;z-index:2;left:28px;right:28px;bottom:28px}
-.tourcopy small{font-size:10px;text-transform:uppercase;letter-spacing:.14em;font-weight:900}
-.tourcopy h3{font-size:34px;margin:7px 0 0}
+.tour:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.68),rgba(0,0,0,.08))}
+.tour-copy{position:absolute;z-index:2;left:28px;bottom:25px}
+.tour-copy small{display:block;text-transform:uppercase;letter-spacing:.12em;font-weight:900;margin-bottom:6px}
+.tour-copy strong{font-family:Georgia,"Times New Roman",serif;font-size:31px}
 
 /* footer */
-footer{background:#161616;color:#fff;padding:58px 0 28px;border-top:7px solid var(--red)}
-.footgrid{display:grid;grid-template-columns:1.35fr repeat(3,1fr);gap:46px}
-.footbrand{display:flex;gap:15px;align-items:flex-start}
-.footbrand .brandcopy strong{color:#fff;font-size:27px}
-.footbrand .brandcopy span{color:#aaa}
-address{font-style:normal;color:#bbb;line-height:1.65;font-size:14px;margin-top:25px}
-footer h4{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:#ffd36e;margin:0 0 16px}
-footer a{display:block;color:#c4c4c4;padding:5px 0;font-size:14px}
-footer a:hover{color:#fff;text-decoration:underline}
-.footbottom{margin-top:42px;padding-top:22px;border-top:1px solid #444;display:flex;justify-content:space-between;gap:22px;color:#999;font-size:12px}
-.mini{display:flex;gap:17px;flex-wrap:wrap}.mini a{display:inline;padding:0}
+footer{
+  background:#173a56;color:#fff;
+  padding:54px 0 26px;
+  border-top:6px solid var(--blaze)
+}
+.footer-grid{
+  display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:45px
+}
+.footer-logo{display:flex;align-items:center;gap:13px;margin-bottom:18px}
+.footer-logo .logotype{font-size:27px}
+.footer-logo .logotype span{font-size:9px}
+address{font-style:normal;color:#cad8e2;line-height:1.6;font-size:13px}
+footer h4{margin:0 0 13px;color:var(--blaze);font-size:12px;text-transform:uppercase;letter-spacing:.1em}
+footer a{display:block;color:#e1ebf1;padding:5px 0;font-size:13px}
+footer a:hover{text-decoration:underline}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.25);
+  margin-top:38px;padding-top:20px;
+  display:flex;justify-content:space-between;gap:20px;
+  color:#c5d5de;font-size:11px
+}
 
 @media(max-width:1050px){
-  .mainnav .wrap{gap:24px}
-  .newsgrid{grid-template-columns:1fr 1fr}
-  .newscard:first-child{grid-column:1/-1}
-  .eventgrid{grid-template-columns:1fr 1fr}
-  .footgrid{grid-template-columns:1.3fr 1fr 1fr}
-  .footgrid>div:last-child{display:none}
+  .mainnav .wrap{gap:22px}
+  .mainnav a{font-size:12px}
+  .explore-grid{grid-template-columns:1fr 1fr}
+  .event-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1.35fr 1fr 1fr}
+  .footer-grid>div:last-child{display:none}
 }
-@media(max-width:800px){
+@media(max-width:780px){
   .wrap{width:calc(100% - 28px)}
-  .topbar{display:none}
-  .brandrow{height:80px}
-  .crest{width:45px;height:53px}
-  .brandcopy strong{font-size:22px}
-  .brandcopy span{font-size:8px}
-  .headtools>a:not(.apply):not(.search){display:none}
-  .headtools .apply{display:none}
-  .mobilemenu{display:grid;width:42px;height:42px;border:1px solid #aaa;place-items:center;font-size:23px}
+  .campuses{display:none}
+  .toplinks a:nth-child(-n+3){display:none}
+  .hero-headrow{min-height:88px}
+  .shield{width:43px;height:51px}
+  .logotype{font-size:26px}
+  .logotype span{font-size:8px}
+  .search{display:none}
   .mainnav{display:none}
-  .hero,.hero .wrap{min-height:560px}
-  .herocopy{width:90%}
-  h1{font-size:58px}
+  .mobile{display:grid;width:42px;height:42px;border:1px solid #fff;place-items:center;font-size:22px}
+  .hero,.hero-content{min-height:580px}
+  .hero-content{padding-bottom:72px}
+  .hero-copy{width:90%}
+  .hero h1{font-size:51px}
   .hero p{font-size:18px}
-  .quickgrid{grid-template-columns:1fr 1fr}
-  .quick a:nth-child(3){border-left:1px solid #111}
-  .section{padding:68px 0}
-  .wolvesgrid{grid-template-columns:1fr}
-  .wolvesphoto{height:430px}
-  .exploregrid{grid-template-columns:1fr 1fr}
-  .campusgrid{grid-template-columns:1fr}
-  .campusphoto{min-height:440px}
-  .campuscopy{padding:58px 30px}
-  .sectionhead{align-items:flex-start;flex-direction:column}
-  .newsgrid{grid-template-columns:1fr}
-  .newscard:first-child{grid-column:auto}
-  .eventgrid{grid-template-columns:1fr}
-  .tourgrid{grid-template-columns:1fr}
-  .footgrid{grid-template-columns:1fr 1fr}
-  .footgrid>div:last-child{display:block}
-  .footgrid>div:first-child{grid-column:1/-1}
+  .tabgrid{grid-template-columns:1fr}
+  .hero-tabs{margin-top:-24px}
+  .tab{min-height:68px}
+  section{padding:64px 0}
+  .wolves{padding-top:86px}
+  .wolves-grid{grid-template-columns:1fr}
+  .wolves-media{height:390px}
+  .explore-grid{grid-template-columns:1fr}
+  .news-grid{grid-template-columns:1fr}
+  .event-grid{grid-template-columns:1fr}
+  .tour-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-grid>div:last-child{display:block}
+  .footer-grid>div:first-child{grid-column:1/-1}
 }
 @media(max-width:480px){
-  .brandcopy span{display:none}
-  .search{display:none}
-  .hero,.hero .wrap{min-height:520px}
-  .herocopy{width:100%}
-  h1{font-size:48px}
-  .hero .btn{width:100%;margin:6px 0}
-  .quickgrid{grid-template-columns:1fr}
-  .quick a{border-left:1px solid #111}
-  .exploregrid{grid-template-columns:1fr}
-  .audience{align-items:flex-start;flex-direction:column}
-  .audience select{width:100%}
-  .footgrid{grid-template-columns:1fr}
-  .footgrid>div:first-child{grid-column:auto}
-  .footbottom{flex-direction:column;align-items:flex-start}
+  .toplinks a:not(.apply){display:none}
+  .hero-copy{width:100%}
+  .hero h1{font-size:43px}
+  .hero p{font-size:16px}
+  .hero-tag{width:94%}
+  .section-title{font-size:40px}
+  .explore-top{align-items:flex-start;flex-direction:column}
+  .explore-top select{width:100%}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-grid>div:first-child{grid-column:auto}
+  .footer-bottom{flex-direction:column}
 }
 </style>
 </head>
@@ -258,36 +407,31 @@ footer a:hover{color:#fff;text-decoration:underline}
 
 <div class="topbar">
   <div class="wrap">
-    <div class="top-left">
-      <a href="https://www.lakeheadu.ca/students" target="_blank" rel="noopener">Students</a>
-      <a href="https://www.lakeheadu.ca/faculty-and-staff" target="_blank" rel="noopener">Faculty &amp; Staff</a>
-      <a href="https://www.lakeheadu.ca/alumni" target="_blank" rel="noopener">Alumni</a>
-    </div>
-    <div class="top-right">
-      <a href="https://ec.lakeheadu.ca/" target="_blank" rel="noopener">Donate</a>
-      <a href="https://www.lakeheadu.ca/admissions/campus-tours" target="_blank" rel="noopener">Visit</a>
-      <a href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">Apply Now</a>
+    <div class="campuses">Thunder Bay • Orillia • Barrie</div>
+    <div class="toplinks">
+      <a href="https://www.lakeheadu.ca/students" target="_blank" rel="noopener">STUDENTS</a>
+      <a href="https://www.lakeheadu.ca/faculty-and-staff" target="_blank" rel="noopener">FACULTY &amp; STAFF</a>
+      <a href="https://www.lakeheadu.ca/alumni" target="_blank" rel="noopener">ALUMNI</a>
+      <a href="https://ec.lakeheadu.ca/" target="_blank" rel="noopener">DONATE</a>
+      <a href="https://www.lakeheadu.ca/admissions/campus-tours" target="_blank" rel="noopener">VISIT</a>
+      <a class="apply" href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">APPLY NOW</a>
     </div>
   </div>
 </div>
 
-<header class="masthead">
-  <div class="wrap brandrow">
-    <a class="brand" href="https://www.lakeheadu.ca/" target="_blank" rel="noopener">
-      <div class="crest"></div>
-      <div class="brandcopy">
-        <strong>Lakehead University</strong>
-        <span>Exceptional. Unconventional.</span>
-      </div>
-    </a>
-    <div class="headtools">
-      <a href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">Admissions</a>
-      <a href="https://www.lakeheadu.ca/admissions/campus-tours" target="_blank" rel="noopener">Visit</a>
-      <a class="apply" href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">Apply Now</a>
-      <a class="search" href="https://www.lakeheadu.ca/search" target="_blank" rel="noopener">⌕</a>
-      <a class="mobilemenu" href="https://www.lakeheadu.ca/" target="_blank" rel="noopener">☰</a>
+<section class="hero">
+  <img class="hero-bg" src="https://www.lakeheadu.ca/sites/default/files/Sept3_MoveIn.jpg" alt="Lakehead University students">
+  <div class="hero-header">
+    <div class="wrap hero-headrow">
+      <a class="logo" href="https://www.lakeheadu.ca/" target="_blank" rel="noopener">
+        <div class="shield"></div>
+        <div class="logotype">Lakehead<span>University</span></div>
+      </a>
+      <a class="search" href="https://www.lakeheadu.ca/search" target="_blank" rel="noopener" aria-label="Search">⌕</a>
+      <a class="mobile" href="https://www.lakeheadu.ca/" target="_blank" rel="noopener">☰</a>
     </div>
   </div>
+
   <nav class="mainnav">
     <div class="wrap">
       <a href="https://www.lakeheadu.ca/programs" target="_blank" rel="noopener">Programs</a>
@@ -295,133 +439,178 @@ footer a:hover{color:#fff;text-decoration:underline}
       <a href="https://www.lakeheadu.ca/campus-life" target="_blank" rel="noopener">Campus Life</a>
       <a href="https://www.lakeheadu.ca/indigenous" target="_blank" rel="noopener">Indigenous</a>
       <a href="https://www.lakeheadu.ca/international" target="_blank" rel="noopener">International Students</a>
-      <a href="https://www.lakeheadu.ca/research-and-innovation" target="_blank" rel="noopener">Research &amp; Innovation</a>
+      <a href="https://www.lakeheadu.ca/research-and-innovation" target="_blank" rel="noopener">Research and Innovation</a>
       <a href="https://www.lakeheadu.ca/about" target="_blank" rel="noopener">About</a>
     </div>
   </nav>
-</header>
+
+  <div class="wrap hero-content">
+    <div class="hero-copy">
+      <div class="hero-tag">
+        <img src="https://www.lakeheadu.ca/sites/all/themes/lakehead_aBeauty/img/tagline.png" alt="Exceptional. Unconventional.">
+      </div>
+      <h1>Start your Lakehead journey.</h1>
+      <p>Discover programs, campus life and a community that challenges you to think differently.</p>
+      <a class="cta" href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">SEE WHAT'S AHEAD →</a>
+    </div>
+  </div>
+  <div class="hero-dots"><i></i><i></i><i></i></div>
+</section>
+
+<div class="hero-tabs">
+  <div class="wrap tabgrid">
+    <a class="tab" href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener"><span>Choose Lakehead</span><span>→</span></a>
+    <a class="tab" href="https://www.lakeheadu.ca/admissions/financing" target="_blank" rel="noopener"><span>Financing Your Education</span><span>→</span></a>
+    <a class="tab" href="https://www.lakeheadu.ca/programs" target="_blank" rel="noopener"><span>Academic Programs</span><span>→</span></a>
+  </div>
+</div>
 
 <main>
-<section class="hero">
-  <img src="https://www.lakeheadu.ca/sites/default/files/Sept3_MoveIn.jpg" alt="Students arriving at Lakehead University">
+<section class="wolves">
   <div class="wrap">
-    <div class="herocopy">
-      <div class="eyebrow">Lakehead University</div>
-      <h1>Exceptional.<br>Unconventional.</h1>
-      <p>Challenge conventions, build meaningful connections and discover what you're capable of at Lakehead University.</p>
-      <a class="btn btn-red" href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">Apply Now</a>
-      <a class="btn btn-outline" href="https://www.lakeheadu.ca/admissions/campus-tours" target="_blank" rel="noopener">Visit Lakehead</a>
-    </div>
-  </div>
-</section>
-
-<section class="quick">
-  <div class="wrap quickgrid">
-    <a href="https://www.lakeheadu.ca/programs" target="_blank" rel="noopener"><small>Find your path</small><strong>Programs</strong><i>→</i></a>
-    <a href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener"><small>Start here</small><strong>Admissions</strong><i>→</i></a>
-    <a href="https://www.lakeheadu.ca/campus-life" target="_blank" rel="noopener"><small>At Lakehead</small><strong>Campus Life</strong><i>→</i></a>
-    <a href="https://www.lakeheadu.ca/research-and-innovation" target="_blank" rel="noopener"><small>Discover</small><strong>Research</strong><i>→</i></a>
-  </div>
-</section>
-
-<section class="section wolves">
-  <div class="wrap wolvesgrid">
-    <div class="wolvesphoto">
-      <img src="https://www.lakeheadu.ca/sites/default/files/uploads/104/Orientation/Images/orientationfun.jpg" alt="Lakehead Thunderwolves students at orientation">
-    </div>
-    <div class="wolvestext">
-      <div class="kicker">Hear from our Thunderwolves</div>
-      <h2>Find your place at Lakehead.</h2>
-      <p>At Lakehead University you'll join a community that will push you to defy limitations and challenge conventions. Meet the students, faculty, alumni and members of the university community who make Lakehead distinctive.</p>
-      <div class="points">
-        <div class="point"><div class="num">01</div><strong>Professors know more than just your student number and grade.</strong></div>
-        <div class="point"><div class="num">02</div><strong>A small and supportive community with room for academic growth and success.</strong></div>
-        <div class="point"><div class="num">03</div><strong>Dare to be different and create connections that last a lifetime.</strong></div>
+    <h2 class="section-title">Hear from our<br>Thunderwolves</h2>
+    <div class="rule"></div>
+    <div class="wolves-grid">
+      <div class="wolves-copy">
+        <p>At Lakehead University you'll join a community that will push you to defy limitations and challenge conventions. Meet some of the students, faculty, alumni, and members of the university community to understand why Lakehead was the right choice for them - and you!</p>
+        <div class="wolves-points">
+          <div class="wolf-point">Professors know more than just your student number and grade</div>
+          <div class="wolf-point">Small and supportive community with the highest potential for academic growth and success</div>
+          <div class="wolf-point">Dare to be different and stand out from the crowd. Start creating connections that will last a lifetime.</div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="section explore">
-  <div class="wrap">
-    <div class="kicker">Explore Lakehead</div>
-    <h2>Make your next move.</h2>
-    <div class="audience"><span>I am a</span><select><option>Select</option><option>Future Student</option><option>Current Student</option><option>Graduate Student</option><option>International Student</option><option>Parent or Supporter</option></select></div>
-    <div class="exploregrid">
-      <a class="explorecard" href="https://www.lakeheadu.ca/programs" target="_blank" rel="noopener"><div class="n">01</div><div><h3>Find your program</h3><p>Find a program that matches your interests and aspirations.</p></div><div class="arr">→</div></a>
-      <a class="explorecard" href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener"><div class="n">02</div><div><h3>How to apply</h3><p>Learn how to apply and start your Lakehead journey.</p></div><div class="arr">→</div></a>
-      <a class="explorecard" href="https://www.lakeheadu.ca/admissions/campus-tours" target="_blank" rel="noopener"><div class="n">03</div><div><h3>Campus Tours</h3><p>Experience the highlights of Lakehead's campuses with a tour guide.</p></div><div class="arr">→</div></a>
-      <a class="explorecard" href="https://www.lakeheadu.ca/admissions/admission-requirements/applying-to-lakehead" target="_blank" rel="noopener"><div class="n">04</div><div><h3>Application Deadlines</h3><p>Make sure you're ready for the next intake.</p></div><div class="arr">→</div></a>
-      <a class="explorecard" href="https://www.lakeheadu.ca/students/finances/student-fees" target="_blank" rel="noopener"><div class="n">05</div><div><h3>Tuition &amp; fees</h3><p>Understand costs and fees associated with your program.</p></div><div class="arr">→</div></a>
-      <a class="explorecard" href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener"><div class="n">06</div><div><h3>Stay Connected</h3><p>Receive invitations, updates and information from Lakehead.</p></div><div class="arr">→</div></a>
-    </div>
-  </div>
-</section>
-
-<section class="campus">
-  <div class="campusgrid">
-    <div class="campusphoto"><img src="https://www.lakeheadu.ca/sites/default/files/uploads/293/images/orientation/Lake-Tamblyn-resized.jpg" alt="Lake Tamblyn at Lakehead University"></div>
-    <div class="campuscopy">
-      <div class="kicker">Life at Lakehead</div>
-      <h2>Two campuses. One Thunderwolf community.</h2>
-      <p>Explore Thunder Bay and Orillia, discover student life, residence, athletics, campus services and the communities surrounding Lakehead.</p>
-      <div>
-        <a class="btn btn-red" href="https://www.lakeheadu.ca/campus-life" target="_blank" rel="noopener">Discover Lakehead</a>
-        <a class="btn btn-outline" href="https://virtualtour.lakeheadu.ca/" target="_blank" rel="noopener">Virtual Tour</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="sectionhead">
-      <div><div class="kicker">Campus Connection</div><h2>News &amp; Stories</h2></div>
-      <a class="textlink" href="https://www.lakeheadu.ca/about/news-and-events" target="_blank" rel="noopener">View Campus Connection</a>
-    </div>
-    <div class="newsgrid">
-      <a class="newscard" href="https://www.lakeheadu.ca/about/news-and-events/news/archive/node/351463" target="_blank" rel="noopener">
-        <div class="newspic"><img src="https://www.lakeheadu.ca/sites/default/files/Sept3_MoveIn.jpg" alt="Lakehead University move-in day"></div>
-        <div class="newsbody"><div class="newsdate">September 3, 2026</div><h3>Lakehead University welcomes students and faculty for the start of a new academic year</h3><p>A new academic year is about to begin across Lakehead's campuses.</p></div>
-      </a>
-      <a class="newscard" href="https://www.lakeheadu.ca/about/news-and-events/news/archive/2026/node/351448" target="_blank" rel="noopener">
-        <div class="newspic"><img src="https://www.lakeheadu.ca/sites/default/files/uploads/113/Home/PepRally20%20_resize.jpg" alt="Lakehead student"></div>
-        <div class="newsbody"><div class="newsdate">September 2, 2026</div><h3>Death is Something We Should Tackle Head On</h3><p>Dr. Kathy Kortes-Miller wants us to talk about the ultimate taboo.</p></div>
-      </a>
-      <a class="newscard" href="https://www.lakeheadu.ca/about/news-and-events/news/archive/2026/node/351392" target="_blank" rel="noopener">
-        <div class="newspic"><img src="https://www.lakeheadu.ca/sites/default/files/uploads/293/images/orientation/future_resized.jpg" alt="Lakehead community member overlooking the water"></div>
-        <div class="newsbody"><div class="newsdate">September 1, 2026</div><h3>Chris Adams Named First Entrepreneur-in-Residence</h3><p>Adams will expand Lakehead's entrepreneurial potential.</p></div>
+      <a class="wolves-media" href="https://youtu.be/iHW3wf-v-wk" target="_blank" rel="noopener">
+        <img src="https://www.lakeheadu.ca/sites/default/files/uploads/104/Orientation/Images/orientationfun.jpg" alt="Lakehead Thunderwolves">
+        <div class="play">▶</div>
       </a>
     </div>
   </div>
 </section>
 
-<section class="section events">
+<section class="explore">
   <div class="wrap">
-    <div class="sectionhead">
-      <div><div class="kicker">What's Happening</div><h2>Events</h2></div>
-      <a class="textlink" href="https://www.lakeheadu.ca/about/news-and-events/events" target="_blank" rel="noopener">View Event Calendar</a>
+    <h2 class="section-title">Explore Lakehead</h2>
+    <div class="rule"></div>
+    <div class="explore-top">
+      <label for="iam">I am a</label>
+      <select id="iam">
+        <option>Select</option>
+        <option>Future Student</option>
+        <option>Current Student</option>
+        <option>International Student</option>
+        <option>Parent or Supporter</option>
+      </select>
     </div>
-    <div class="eventgrid">
-      <article class="event"><div class="eventdate">SEP <strong>5</strong></div><h3>Barrie Downtown Adventure</h3><p>10:00 AM to 2:00 PM / Meet Outside of 24 Maple / Barrie STEM Hub</p><a href="https://www.lakeheadu.ca/students/orientation/events/archive/node/349713" target="_blank" rel="noopener">Event details →</a></article>
-      <article class="event"><div class="eventdate">SEP <strong>5</strong></div><h3>(OR) Downtown Adventure</h3><p>10:00 AM to 2:00 PM / Meet Outside of Simcoe Hall / Orillia</p><a href="https://www.lakeheadu.ca/students/orientation/events/archive/node/349223" target="_blank" rel="noopener">Event details →</a></article>
-      <article class="event"><div class="eventdate">SEP <strong>5</strong></div><h3>Downtown Adventure</h3><p>11:00 AM / Agora Circle Bus Loop to Marina Park / Thunder Bay</p><a href="https://www.lakeheadu.ca/students/orientation/events/archive/node/349050" target="_blank" rel="noopener">Event details →</a></article>
-      <article class="event"><div class="eventdate">SEP <strong>5</strong></div><h3>Glow Party</h3><p>8:00 PM to 11:00 PM / The Outpost / Thunder Bay</p><a href="https://www.lakeheadu.ca/students/orientation/events/archive/node/349900" target="_blank" rel="noopener">Event details →</a></article>
+
+    <div class="explore-grid">
+      <article class="ex-card">
+        <h3>Find your program</h3>
+        <p>Find a program that matches your interests and aspirations</p>
+        <a href="https://www.lakeheadu.ca/programs" target="_blank" rel="noopener">Learn about our programs →</a>
+      </article>
+      <article class="ex-card">
+        <h3>How to apply</h3>
+        <p>Learn how to apply and start your Lakehead journey</p>
+        <a href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">Get started →</a>
+      </article>
+      <article class="ex-card">
+        <h3>Campus Tours</h3>
+        <p>Experience the highlights of our beautiful campus with one of our tour guides</p>
+        <a href="https://www.lakeheadu.ca/admissions/campus-tours" target="_blank" rel="noopener">Visit our campuses →</a>
+      </article>
+      <article class="ex-card">
+        <h3>Application Deadlines</h3>
+        <p>Learn about the application deadlines and ensure you're ready</p>
+        <a href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">View our application deadlines →</a>
+      </article>
+      <article class="ex-card">
+        <h3>Tuition &amp; fees</h3>
+        <p>Familiarize yourself with the cost and fees associated with your program</p>
+        <a href="https://www.lakeheadu.ca/students/finances/student-fees" target="_blank" rel="noopener">Learn about tuition information →</a>
+      </article>
+      <article class="ex-card">
+        <h3>Stay Connected</h3>
+        <p>Sign up to receive invitations to our special events, updates and more!</p>
+        <a href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">Stay connected →</a>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="section tours">
+<section>
   <div class="wrap">
-    <div class="sectionhead"><div><div class="kicker">Explore From Anywhere</div><h2>Virtual Tours</h2></div></div>
-    <div class="tourgrid">
+    <h2 class="section-title">News &amp; Stories</h2>
+    <div class="rule"></div>
+    <div class="news-grid">
+      <a class="news-card" href="https://www.lakeheadu.ca/about/news-and-events/news/archive/node/351463" target="_blank" rel="noopener">
+        <div class="news-img"><img src="https://www.lakeheadu.ca/sites/default/files/Sept3_MoveIn.jpg" alt="Lakehead move-in"></div>
+        <div class="news-date">September 3, 2026</div>
+        <h3>Lakehead University welcomes students and faculty for the start of a new academic year</h3>
+        <p>A new academic year is about to begin at Lakehead University.</p>
+      </a>
+      <a class="news-card" href="https://www.lakeheadu.ca/about/news-and-events/news/archive/2026/node/351448" target="_blank" rel="noopener">
+        <div class="news-img"><img src="https://www.lakeheadu.ca/sites/default/files/uploads/113/Home/PepRally20%20_resize.jpg" alt="Lakehead students"></div>
+        <div class="news-date">September 2, 2026</div>
+        <h3>Death is Something We Should Tackle Head On</h3>
+        <p>Dr. Kathy Kortes-Miller Wants Us to Talk about the Ultimate Taboo.</p>
+      </a>
+      <a class="news-card" href="https://www.lakeheadu.ca/about/news-and-events/news/archive/2026/node/351392" target="_blank" rel="noopener">
+        <div class="news-img"><img src="https://www.lakeheadu.ca/sites/default/files/uploads/293/images/orientation/future_resized.jpg" alt="Lakehead community"></div>
+        <div class="news-date">September 1, 2026</div>
+        <h3>Chris Adams Named First Entrepreneur-in-Residence</h3>
+        <p>Adams Will Expand Lakehead's Entrepreneurial Potential.</p>
+      </a>
+    </div>
+    <a class="more" href="https://www.lakeheadu.ca/about/news-and-events" target="_blank" rel="noopener">View Campus Connection →</a>
+  </div>
+</section>
+
+<section class="events">
+  <div class="wrap">
+    <h2 class="section-title">Events</h2>
+    <div class="rule"></div>
+    <div class="event-grid">
+      <article class="event">
+        <div class="event-date">SEP <strong>5</strong></div>
+        <h3>Barrie Downtown Adventure</h3>
+        <p>10:00 AM to 2:00 PM / Meet Outside of 24 Maple, Barrie STEM Hub</p>
+        <a href="https://www.lakeheadu.ca/about/news-and-events/events" target="_blank" rel="noopener">Add to Calendar</a>
+      </article>
+      <article class="event">
+        <div class="event-date">SEP <strong>5</strong></div>
+        <h3>(OR) Downtown Adventure</h3>
+        <p>10:00 AM to 2:00 PM / Meet Outside of Simcoe Hall, Orillia Campus</p>
+        <a href="https://www.lakeheadu.ca/about/news-and-events/events" target="_blank" rel="noopener">Add to Calendar</a>
+      </article>
+      <article class="event">
+        <div class="event-date">SEP <strong>5</strong></div>
+        <h3>Downtown Adventure</h3>
+        <p>11:00 AM / Agora Circle Bus Loop to Marina Park / Thunder Bay</p>
+        <a href="https://www.lakeheadu.ca/about/news-and-events/events" target="_blank" rel="noopener">Add to Calendar</a>
+      </article>
+      <article class="event">
+        <div class="event-date">SEP <strong>5</strong></div>
+        <h3>Glow Party</h3>
+        <p>8:00 PM to 11:00 PM / The Outpost / Thunder Bay</p>
+        <a href="https://www.lakeheadu.ca/about/news-and-events/events" target="_blank" rel="noopener">Add to Calendar</a>
+      </article>
+    </div>
+    <a class="more" style="color:white;border-color:var(--blaze)" href="https://www.lakeheadu.ca/about/news-and-events/events" target="_blank" rel="noopener">View Event Calendar →</a>
+  </div>
+</section>
+
+<section class="tours">
+  <div class="wrap">
+    <h2 class="section-title">Virtual Tours</h2>
+    <div class="rule"></div>
+    <div class="tour-grid">
       <a class="tour" href="https://virtualtour.lakeheadu.ca/" target="_blank" rel="noopener">
         <img src="https://www.lakeheadu.ca/sites/default/files/uploads/293/images/orientation/Lake-Tamblyn-resized.jpg" alt="Thunder Bay campus">
-        <div class="tourcopy"><small>Virtual Tour</small><h3>Thunder Bay</h3></div>
+        <div class="tour-copy"><small>Virtual tour</small><strong>Thunder Bay</strong></div>
       </a>
       <a class="tour" href="https://virtualtour.lakeheadu.ca/" target="_blank" rel="noopener">
-        <img src="https://www.lakeheadu.ca/sites/default/files/uploads/104/Orientation/Images/orientationfun.jpg" alt="Lakehead students">
-        <div class="tourcopy"><small>Virtual Tour</small><h3>Orillia</h3></div>
+        <img src="https://www.lakeheadu.ca/sites/default/files/uploads/104/Orientation/Images/orientationfun.jpg" alt="Orillia campus students">
+        <div class="tour-copy"><small>Virtual tour</small><strong>Orillia</strong></div>
       </a>
     </div>
   </div>
@@ -430,18 +619,43 @@ footer a:hover{color:#fff;text-decoration:underline}
 
 <footer>
   <div class="wrap">
-    <div class="footgrid">
+    <div class="footer-grid">
       <div>
-        <div class="footbrand"><div class="crest"></div><div class="brandcopy"><strong>Lakehead University</strong><span>Exceptional. Unconventional.</span></div></div>
-        <address>Thunder Bay Campus<br>955 Oliver Road, Thunder Bay, ON P7B 5E1<br>(807) 343-8110</address>
+        <div class="footer-logo">
+          <div class="shield"></div>
+          <div class="logotype">Lakehead<span>University</span></div>
+        </div>
+        <address>
+          955 Oliver Road<br>
+          Thunder Bay, Ontario, Canada P7B 5E1<br>
+          (807) 343-8110
+        </address>
       </div>
-      <div><h4>Explore</h4><a href="https://www.lakeheadu.ca/programs" target="_blank" rel="noopener">Programs</a><a href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">Admissions</a><a href="https://www.lakeheadu.ca/campus-life" target="_blank" rel="noopener">Campus Life</a><a href="https://www.lakeheadu.ca/research-and-innovation" target="_blank" rel="noopener">Research &amp; Innovation</a></div>
-      <div><h4>Resources</h4><a href="https://www.lakeheadu.ca/students" target="_blank" rel="noopener">Students</a><a href="https://www.lakeheadu.ca/faculty-and-staff" target="_blank" rel="noopener">Faculty &amp; Staff</a><a href="https://library.lakeheadu.ca/" target="_blank" rel="noopener">Library</a><a href="https://myportal.lakeheadu.ca/" target="_blank" rel="noopener">myPortal</a></div>
-      <div><h4>Lakehead</h4><a href="https://www.lakeheadu.ca/about" target="_blank" rel="noopener">About</a><a href="https://www.lakeheadu.ca/about/contact-us" target="_blank" rel="noopener">Contact Us</a><a href="https://www.lakeheadu.ca/about/accessibility" target="_blank" rel="noopener">Accessibility</a><a href="https://www.lakeheadu.ca/about/privacy" target="_blank" rel="noopener">Privacy</a></div>
+      <div>
+        <h4>Programs &amp; Admissions</h4>
+        <a href="https://www.lakeheadu.ca/programs" target="_blank" rel="noopener">Programs</a>
+        <a href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">Admissions</a>
+        <a href="https://www.lakeheadu.ca/admissions/campus-tours" target="_blank" rel="noopener">Campus Tours</a>
+        <a href="https://www.lakeheadu.ca/international" target="_blank" rel="noopener">International Students</a>
+      </div>
+      <div>
+        <h4>Lakehead</h4>
+        <a href="https://www.lakeheadu.ca/campus-life" target="_blank" rel="noopener">Campus Life</a>
+        <a href="https://www.lakeheadu.ca/indigenous" target="_blank" rel="noopener">Indigenous</a>
+        <a href="https://www.lakeheadu.ca/research-and-innovation" target="_blank" rel="noopener">Research &amp; Innovation</a>
+        <a href="https://www.lakeheadu.ca/about" target="_blank" rel="noopener">About</a>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="https://library.lakeheadu.ca/" target="_blank" rel="noopener">Library</a>
+        <a href="https://myportal.lakeheadu.ca/" target="_blank" rel="noopener">myPortal</a>
+        <a href="https://myemail.lakeheadu.ca/" target="_blank" rel="noopener">myEmail</a>
+        <a href="https://www.lakeheadu.ca/about/contact-us" target="_blank" rel="noopener">Contact</a>
+      </div>
     </div>
-    <div class="footbottom">
-      <div>Lakehead University — Thunder Bay &amp; Orillia, Ontario</div>
-      <div class="mini"><a href="https://www.lakeheadu.ca/about/contact-us" target="_blank" rel="noopener">Contact</a><a href="https://www.lakeheadu.ca/about/accessibility" target="_blank" rel="noopener">Accessibility</a><a href="https://www.lakeheadu.ca/about/privacy" target="_blank" rel="noopener">Privacy</a></div>
+    <div class="footer-bottom">
+      <div>Lakehead University</div>
+      <div>Thunder Bay • Orillia • Barrie</div>
     </div>
   </div>
 </footer>
