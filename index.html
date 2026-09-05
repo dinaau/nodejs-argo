@@ -3,41 +3,448 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Northern Illinois University</title>
-<meta name="description" content="Northern Illinois University">
+<title>Lakehead University</title>
+<meta name="description" content="Lakehead University">
 <style>
-:root{--red:#c8102e;--dark:#111;--muted:#5d5d5d;--soft:#f3f3f2;--line:#d5d5d3;--max:1320px}
-*{box-sizing:border-box}body{margin:0;color:var(--dark);font-family:Arial,Helvetica,sans-serif}a{color:inherit;text-decoration:none}img{display:block;width:100%}.wrap{width:min(var(--max),calc(100% - 52px));margin:auto}
-.utility{height:39px;background:#151515;color:#ddd;font-size:12px}.utility .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}.utility div{display:flex;gap:24px}
-header{background:#fff;border-bottom:1px solid #ddd}.brandrow{height:96px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:16px}.shield{width:58px;height:66px;background:var(--red);color:white;clip-path:polygon(10% 0,90% 0,90% 74%,50% 100%,10% 74%);display:grid;place-items:center;font-weight:900;font-size:20px}.brandcopy strong{display:block;font:700 27px/1 Georgia,serif}.brandcopy span{display:block;margin-top:8px;font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:#555}.tools{display:flex;align-items:center;gap:17px;font-size:13px;font-weight:700}.apply{background:var(--red);color:white;padding:13px 18px;text-transform:uppercase}.search{width:42px;height:42px;border:1px solid #aaa;display:grid;place-items:center;font-size:20px}
-.nav{border-top:1px solid #eee}.nav .wrap{height:58px;display:flex;justify-content:center;align-items:center;gap:48px}.nav a{height:58px;display:flex;align-items:center;font-size:14px;font-weight:800;text-transform:uppercase;border-bottom:4px solid transparent}.nav a:hover{color:var(--red);border-color:var(--red)}
-.hero{position:relative;min-height:640px;background:#222;color:#fff;overflow:hidden}.hero>img{position:absolute;inset:0;height:100%;object-fit:cover}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.8),rgba(0,0,0,.6) 38%,rgba(0,0,0,.08) 78%)}.hero .wrap{position:relative;z-index:2;min-height:640px;display:flex;align-items:center}.hero-copy{width:min(680px,62%)}.eyebrow{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:#f0c6ce;margin-bottom:16px}h1,h2,h3{font-family:Georgia,serif}h1{font-size:clamp(58px,7vw,98px);line-height:.9;letter-spacing:-.055em;margin:0 0 24px}.hero p{font-size:20px;line-height:1.55;max-width:620px}.btn{display:inline-flex;min-height:49px;padding:0 22px;align-items:center;justify-content:center;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;border:2px solid transparent}.btn.red{background:var(--red);color:#fff}.btn.out{border-color:#fff;margin-left:8px}
-.actions{border-bottom:1px solid #111}.actiongrid{display:grid;grid-template-columns:repeat(3,1fr)}.action{min-height:145px;padding:28px;border-right:1px solid #111;display:flex;flex-direction:column;justify-content:space-between}.action:first-child{border-left:1px solid #111}.action:hover{background:#111;color:#fff}.action small{color:var(--red);font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.14em}.action strong{font:700 30px/1 Georgia,serif}.action span{font-size:14px;color:#666}.action:hover span{color:#ccc}
-.section{padding:88px 0}.kicker{color:var(--red);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.14em;margin-bottom:12px}h2{font-size:clamp(45px,5vw,68px);line-height:.96;letter-spacing:-.045em;margin:0 0 20px}.textlink{color:var(--red);font-size:13px;font-weight:900;text-transform:uppercase;border-bottom:2px solid var(--red);padding-bottom:4px}.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:38px}.sectionhead h2{margin:0}
-.online{background:var(--soft)}.onlinegrid{display:grid;grid-template-columns:1.04fr .96fr;min-height:560px}.onlinephoto{position:relative;overflow:hidden}.onlinephoto img{height:100%;object-fit:cover}.onlinecopy{padding:72px 68px;display:flex;flex-direction:column;justify-content:center}.onlinecopy h2{font-size:54px}.onlinecopy p{font-size:18px;line-height:1.65;color:#4d4d4d}
-.spotgrid{display:grid;grid-template-columns:.85fr 1.15fr;gap:68px;align-items:center}.portrait{height:540px;overflow:hidden}.portrait img{height:100%;object-fit:cover}.quote{font:400 34px/1.34 Georgia,serif;margin:0 0 27px}.quote:before{content:"“";display:block;color:var(--red);font-size:108px;line-height:.55}.person strong{display:block;font-size:18px}.person span{font-size:14px;color:#666}.spotlinks{display:flex;gap:9px;margin-top:28px}.spotlinks a{border:1px solid #222;padding:10px 13px;font-size:12px;font-weight:800}
-.stats{background:#111;color:white}.statgrid{display:grid;grid-template-columns:repeat(3,1fr)}.stat{min-height:280px;padding:36px;border-right:1px solid #555;display:flex;flex-direction:column;justify-content:space-between}.stat:first-child{border-left:1px solid #555}.num{font:700 67px/1 Georgia,serif}.stat p{color:#ccc;font-size:16px}.stat a{color:#f58a9b;font-size:12px;font-weight:900;text-transform:uppercase}
-.campus{background:#ece9e5}.campusgrid{display:grid;grid-template-columns:1.15fr .85fr;gap:65px;align-items:center}.campusphoto{height:500px}.campusphoto img{height:100%;object-fit:cover}.campuscopy p{font-size:18px;line-height:1.65;color:#56514d}.campuslinks{display:grid;gap:8px}.campuslinks a{background:#fff;border:1px solid #222;padding:16px 18px;display:flex;justify-content:space-between;font-weight:800}.campuslinks a:hover{background:var(--red);color:#fff;border-color:var(--red)}
-.eventgrid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #111;border-left:1px solid #111}.event{min-height:250px;padding:27px;border-right:1px solid #111;border-bottom:1px solid #111;display:flex;flex-direction:column}.eventdate{color:var(--red);font-size:12px;font-weight:900;text-transform:uppercase;margin-bottom:28px}.event h3{font-size:24px;line-height:1.12;margin:0 0 14px}.event p{font-size:14px;color:#606060;line-height:1.5}.event a{margin-top:auto;color:var(--red);font-size:12px;font-weight:900}
-.news{background:#f4f4f3}.newsgrid{display:grid;grid-template-columns:1.2fr .9fr .9fr;border-top:1px solid #111;border-left:1px solid #111}.newscard{border-right:1px solid #111;border-bottom:1px solid #111;background:#fff}.newspic{aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid #111}.newspic img{height:100%;object-fit:cover}.newsbody{padding:24px}.newsbody small{color:var(--red);font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.13em}.newsbody h3{font-size:24px;line-height:1.15;margin:10px 0 0}.newscard:first-child h3{font-size:31px}
-footer{background:#171717;color:#fff;padding:58px 0 28px;border-top:7px solid var(--red)}.footgrid{display:grid;grid-template-columns:1.35fr repeat(3,1fr);gap:46px}.footbrand{display:flex;gap:15px}.footbrand .brandcopy strong{color:#fff;font-size:24px}.footbrand .brandcopy span{color:#aaa}address{font-style:normal;color:#bbb;line-height:1.65;font-size:14px;margin-top:24px}footer h4{font-size:11px;text-transform:uppercase;color:#f3c2ca;letter-spacing:.14em;margin:0 0 15px}footer a{display:block;color:#c5c5c5;padding:5px 0;font-size:14px}.footbottom{margin-top:42px;padding-top:21px;border-top:1px solid #444;display:flex;justify-content:space-between;color:#999;font-size:12px}
-@media(max-width:900px){.nav{display:none}.utility{display:none}.tools a:not(.apply):not(.search){display:none}.hero-copy{width:85%}.onlinegrid,.spotgrid,.campusgrid{grid-template-columns:1fr}.onlinephoto{min-height:430px}.portrait{height:460px}.statgrid,.eventgrid{grid-template-columns:1fr}.newsgrid{grid-template-columns:1fr}.footgrid{grid-template-columns:1fr 1fr}.footgrid>div:first-child{grid-column:1/-1}.actiongrid{grid-template-columns:1fr}.action{border-left:1px solid #111}.sectionhead{align-items:flex-start;flex-direction:column}}
-@media(max-width:520px){.wrap{width:calc(100% - 28px)}.brandrow{height:80px}.shield{width:46px;height:54px;font-size:16px}.brandcopy strong{font-size:20px}.brandcopy span{display:none}.tools .apply,.tools .search{display:none}.hero,.hero .wrap{min-height:520px}.hero-copy{width:100%}h1{font-size:48px}.hero p{font-size:18px}.hero .btn{width:100%;margin:6px 0}.onlinecopy{padding:55px 26px}.onlinecopy h2{font-size:43px}.quote{font-size:29px}.footgrid{grid-template-columns:1fr}.footgrid>div:first-child{grid-column:auto}.footbottom{flex-direction:column;gap:15px}}
+:root{
+  --red:#b51f2e;
+  --red2:#8f1722;
+  --gold:#f0b323;
+  --ink:#1a1a1a;
+  --navy:#1e2a34;
+  --paper:#fff;
+  --soft:#f4f2ef;
+  --muted:#616161;
+  --line:#d8d5d2;
+  --max:1320px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:#fff;color:var(--ink);
+  font-family:Arial,Helvetica,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{width:min(var(--max),calc(100% - 52px));margin:auto}
+
+/* top */
+.topbar{background:#191919;color:#fff;font-size:12px}
+.topbar .wrap{height:39px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.top-left,.top-right{display:flex;align-items:center;gap:24px}
+.topbar a{color:#ddd}
+.topbar a:hover{color:#fff;text-decoration:underline}
+
+/* masthead */
+.masthead{background:#fff;border-bottom:1px solid #ddd}
+.brandrow{height:100px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.brand{display:flex;align-items:center;gap:15px}
+.crest{
+  width:58px;height:68px;background:linear-gradient(#b51f2e 0 33%,#f0b323 33% 47%,#1e2a34 47% 100%);
+  border-radius:4px 4px 11px 11px;position:relative;overflow:hidden;border:1px solid #ccc
+}
+.crest:before,.crest:after{content:"";position:absolute;left:8px;right:8px;height:5px;background:#fff;border-radius:50%}
+.crest:before{bottom:16px;transform:rotate(4deg)}.crest:after{bottom:7px;transform:rotate(-4deg)}
+.brandcopy strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:31px;line-height:1;font-weight:700;letter-spacing:-.03em}
+.brandcopy span{display:block;margin-top:8px;font-size:10px;text-transform:uppercase;letter-spacing:.17em;color:#666}
+.headtools{display:flex;align-items:center;gap:17px;font-size:13px;font-weight:700}
+.headtools>a:not(.apply):hover{color:var(--red)}
+.apply{background:var(--red);color:#fff!important;padding:13px 18px;text-transform:uppercase;letter-spacing:.05em}
+.apply:hover{background:var(--red2)!important}
+.search{width:42px;height:42px;border:1px solid #aaa;display:grid;place-items:center;font-size:20px}
+.mobilemenu{display:none}
+
+/* nav */
+.mainnav{border-top:1px solid #ece9e6;background:#fff}
+.mainnav .wrap{min-height:61px;display:flex;align-items:center;justify-content:center;gap:39px}
+.mainnav a{
+  min-height:61px;display:flex;align-items:center;
+  font-size:14px;font-weight:800;
+  border-bottom:4px solid transparent
+}
+.mainnav a:hover{color:var(--red);border-color:var(--red)}
+
+/* hero */
+.hero{position:relative;min-height:640px;color:#fff;overflow:hidden;background:#222}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.58) 42%,rgba(0,0,0,.08) 78%)}
+.hero .wrap{position:relative;z-index:2;min-height:640px;display:flex;align-items:center}
+.herocopy{width:min(690px,62%);padding:60px 0}
+.eyebrow{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:#ffd975;margin-bottom:17px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif}
+h1{font-size:clamp(58px,7vw,100px);line-height:.88;letter-spacing:-.055em;margin:0 0 24px}
+.hero p{font-size:20px;line-height:1.55;max-width:620px;margin:0 0 30px;color:#f4f4f4}
+.btn{
+  min-height:49px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;border:2px solid transparent
+}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red2)}
+.btn-outline{border-color:#fff;color:#fff;margin-left:8px}
+.btn-outline:hover{background:#fff;color:#111}
+
+/* quick */
+.quick{border-bottom:1px solid #111;background:#fff}
+.quickgrid{display:grid;grid-template-columns:repeat(4,1fr)}
+.quick a{
+  min-height:118px;padding:25px 26px;border-right:1px solid #111;
+  display:flex;flex-direction:column;justify-content:space-between
+}
+.quick a:first-child{border-left:1px solid #111}
+.quick a:hover{background:#111;color:#fff}
+.quick small{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:var(--red)}
+.quick a:hover small{color:#ff9aaa}
+.quick strong{font:700 25px/1.05 Georgia,"Times New Roman",serif}
+.quick i{font-style:normal;font-size:20px}
+
+/* sections */
+.section{padding:88px 0}
+.kicker{color:var(--red);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.14em;margin-bottom:12px}
+h2{font-size:clamp(45px,5.2vw,70px);line-height:.96;letter-spacing:-.045em;margin:0 0 20px}
+.lead{font-size:18px;line-height:1.65;color:var(--muted);max-width:760px;margin:0}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:38px}
+.sectionhead h2{margin:0}
+.textlink{color:var(--red);font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid var(--red);padding-bottom:4px}
+
+/* Thunderwolves */
+.wolves{background:var(--soft)}
+.wolvesgrid{display:grid;grid-template-columns:1.02fr .98fr;gap:62px;align-items:center}
+.wolvesphoto{height:550px;overflow:hidden}
+.wolvesphoto img{width:100%;height:100%;object-fit:cover}
+.wolvestext p{font-size:18px;line-height:1.65;color:#525252;margin:0 0 24px}
+.points{display:grid;gap:0;margin-top:28px;border-top:1px solid #111}
+.point{display:grid;grid-template-columns:56px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid #111}
+.point .num{font:700 31px/1 Georgia,serif;color:var(--red)}
+.point strong{display:block;font-size:16px;line-height:1.35}
+
+/* explore */
+.explore{background:#fff}
+.audience{display:flex;align-items:center;gap:14px;margin:26px 0 40px}
+.audience span{font-size:15px;font-weight:700}
+.audience select{min-width:260px;height:48px;border:1px solid #222;background:#fff;padding:0 14px;font-size:15px}
+.exploregrid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #111;border-left:1px solid #111}
+.explorecard{
+  min-height:265px;padding:28px;border-right:1px solid #111;border-bottom:1px solid #111;
+  display:flex;flex-direction:column;justify-content:space-between;background:#fff
+}
+.explorecard:nth-child(2),.explorecard:nth-child(5){background:#f5f3f0}
+.explorecard:hover{background:var(--red);color:#fff}
+.explorecard .n{font-size:11px;font-weight:900;letter-spacing:.12em;color:#777}
+.explorecard:hover .n{color:#ffd7dc}
+.explorecard h3{font-size:26px;line-height:1.08;margin:0 0 11px}
+.explorecard p{font-size:14px;line-height:1.5;color:#626262;margin:0}
+.explorecard:hover p{color:#f1dfe2}
+.explorecard .arr{font-size:22px}
+
+/* campus split */
+.campus{background:#1d2933;color:#fff;padding:0}
+.campusgrid{display:grid;grid-template-columns:1fr 1fr;min-height:580px}
+.campusphoto{position:relative;overflow:hidden}
+.campusphoto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.campuscopy{padding:74px 68px;display:flex;flex-direction:column;justify-content:center}
+.campuscopy .kicker{color:#ffd36e}
+.campuscopy p{font-size:18px;line-height:1.65;color:#d9e0e5;margin:0 0 27px}
+
+/* news */
+.newsgrid{display:grid;grid-template-columns:1.2fr .9fr .9fr;border-top:1px solid #111;border-left:1px solid #111}
+.newscard{border-right:1px solid #111;border-bottom:1px solid #111;background:#fff}
+.newspic{aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid #111;background:#ddd}
+.newspic img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.newscard:hover img{transform:scale(1.018)}
+.newsbody{padding:24px}
+.newsdate{color:var(--red);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.09em;margin-bottom:10px}
+.newsbody h3{font-size:23px;line-height:1.15;margin:0 0 9px}
+.newscard:first-child h3{font-size:31px}
+.newsbody p{font-size:14px;line-height:1.5;color:#666;margin:0}
+.newscard:hover h3{color:var(--red)}
+
+/* events */
+.events{background:#f3f3f2}
+.eventgrid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #111;border-left:1px solid #111}
+.event{min-height:280px;padding:27px;border-right:1px solid #111;border-bottom:1px solid #111;background:#fff;display:flex;flex-direction:column}
+.eventdate{color:var(--red);font:700 13px/1 Arial,sans-serif;text-transform:uppercase;letter-spacing:.11em;margin-bottom:30px}
+.eventdate strong{display:block;font:700 42px/1 Georgia,serif;margin-top:4px}
+.event h3{font-size:21px;line-height:1.12;margin:0 0 13px}
+.event p{font-size:13px;line-height:1.55;color:#666;margin:0 0 20px}
+.event a{margin-top:auto;color:var(--red);font-size:12px;font-weight:900;text-transform:uppercase}
+
+/* virtual tours */
+.tours{background:#fff}
+.tourgrid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #111;border-left:1px solid #111}
+.tour{
+  min-height:360px;border-right:1px solid #111;border-bottom:1px solid #111;
+  position:relative;overflow:hidden;color:#fff
+}
+.tour img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tour:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.74),rgba(0,0,0,.08) 62%)}
+.tourcopy{position:absolute;z-index:2;left:28px;right:28px;bottom:28px}
+.tourcopy small{font-size:10px;text-transform:uppercase;letter-spacing:.14em;font-weight:900}
+.tourcopy h3{font-size:34px;margin:7px 0 0}
+
+/* footer */
+footer{background:#161616;color:#fff;padding:58px 0 28px;border-top:7px solid var(--red)}
+.footgrid{display:grid;grid-template-columns:1.35fr repeat(3,1fr);gap:46px}
+.footbrand{display:flex;gap:15px;align-items:flex-start}
+.footbrand .brandcopy strong{color:#fff;font-size:27px}
+.footbrand .brandcopy span{color:#aaa}
+address{font-style:normal;color:#bbb;line-height:1.65;font-size:14px;margin-top:25px}
+footer h4{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:#ffd36e;margin:0 0 16px}
+footer a{display:block;color:#c4c4c4;padding:5px 0;font-size:14px}
+footer a:hover{color:#fff;text-decoration:underline}
+.footbottom{margin-top:42px;padding-top:22px;border-top:1px solid #444;display:flex;justify-content:space-between;gap:22px;color:#999;font-size:12px}
+.mini{display:flex;gap:17px;flex-wrap:wrap}.mini a{display:inline;padding:0}
+
+@media(max-width:1050px){
+  .mainnav .wrap{gap:24px}
+  .newsgrid{grid-template-columns:1fr 1fr}
+  .newscard:first-child{grid-column:1/-1}
+  .eventgrid{grid-template-columns:1fr 1fr}
+  .footgrid{grid-template-columns:1.3fr 1fr 1fr}
+  .footgrid>div:last-child{display:none}
+}
+@media(max-width:800px){
+  .wrap{width:calc(100% - 28px)}
+  .topbar{display:none}
+  .brandrow{height:80px}
+  .crest{width:45px;height:53px}
+  .brandcopy strong{font-size:22px}
+  .brandcopy span{font-size:8px}
+  .headtools>a:not(.apply):not(.search){display:none}
+  .headtools .apply{display:none}
+  .mobilemenu{display:grid;width:42px;height:42px;border:1px solid #aaa;place-items:center;font-size:23px}
+  .mainnav{display:none}
+  .hero,.hero .wrap{min-height:560px}
+  .herocopy{width:90%}
+  h1{font-size:58px}
+  .hero p{font-size:18px}
+  .quickgrid{grid-template-columns:1fr 1fr}
+  .quick a:nth-child(3){border-left:1px solid #111}
+  .section{padding:68px 0}
+  .wolvesgrid{grid-template-columns:1fr}
+  .wolvesphoto{height:430px}
+  .exploregrid{grid-template-columns:1fr 1fr}
+  .campusgrid{grid-template-columns:1fr}
+  .campusphoto{min-height:440px}
+  .campuscopy{padding:58px 30px}
+  .sectionhead{align-items:flex-start;flex-direction:column}
+  .newsgrid{grid-template-columns:1fr}
+  .newscard:first-child{grid-column:auto}
+  .eventgrid{grid-template-columns:1fr}
+  .tourgrid{grid-template-columns:1fr}
+  .footgrid{grid-template-columns:1fr 1fr}
+  .footgrid>div:last-child{display:block}
+  .footgrid>div:first-child{grid-column:1/-1}
+}
+@media(max-width:480px){
+  .brandcopy span{display:none}
+  .search{display:none}
+  .hero,.hero .wrap{min-height:520px}
+  .herocopy{width:100%}
+  h1{font-size:48px}
+  .hero .btn{width:100%;margin:6px 0}
+  .quickgrid{grid-template-columns:1fr}
+  .quick a{border-left:1px solid #111}
+  .exploregrid{grid-template-columns:1fr}
+  .audience{align-items:flex-start;flex-direction:column}
+  .audience select{width:100%}
+  .footgrid{grid-template-columns:1fr}
+  .footgrid>div:first-child{grid-column:auto}
+  .footbottom{flex-direction:column;align-items:flex-start}
+}
 </style>
 </head>
 <body>
-<div class="utility"><div class="wrap"><div><a href="https://www.niu.edu/current-students/index.shtml" target="_blank">Students</a><a href="https://www.niu.edu/faculty-staff/index.shtml" target="_blank">Faculty &amp; Staff</a><a href="https://www.niu.edu/alumni/index.shtml" target="_blank">Alumni</a></div><div><a href="https://directory.niu.edu/" target="_blank">Directory</a><a href="https://calendar.niu.edu/" target="_blank">Calendar</a><a href="https://huskiehub.niu.edu/" target="_blank">Huskie Hub</a></div></div></div>
-<header><div class="wrap brandrow"><a class="brand" href="https://www.niu.edu/" target="_blank"><div class="shield">NIU</div><div class="brandcopy"><strong>Northern Illinois University</strong><span>Your Future. Our Focus.</span></div></a><div class="tools"><a href="https://www.niu.edu/admissions/index.shtml" target="_blank">Admissions</a><a href="https://www.niu.edu/admissions/visit/index.shtml" target="_blank">Visit</a><a class="apply" href="https://www.niu.edu/admissions/apply/index.shtml" target="_blank">Apply Now</a><a class="search" href="https://www.niu.edu/search/index.shtml" target="_blank">⌕</a></div></div><nav class="nav"><div class="wrap"><a href="https://www.niu.edu/admissions/index.shtml" target="_blank">Admissions</a><a href="https://www.niu.edu/academics/index.shtml" target="_blank">Academics</a><a href="https://www.niu.edu/student-life/index.shtml" target="_blank">Student Life</a><a href="https://www.niu.edu/research/index.shtml" target="_blank">Research</a><a href="https://www.niu.edu/about/index.shtml" target="_blank">About NIU</a></div></nav></header>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="top-left">
+      <a href="https://www.lakeheadu.ca/students" target="_blank" rel="noopener">Students</a>
+      <a href="https://www.lakeheadu.ca/faculty-and-staff" target="_blank" rel="noopener">Faculty &amp; Staff</a>
+      <a href="https://www.lakeheadu.ca/alumni" target="_blank" rel="noopener">Alumni</a>
+    </div>
+    <div class="top-right">
+      <a href="https://ec.lakeheadu.ca/" target="_blank" rel="noopener">Donate</a>
+      <a href="https://www.lakeheadu.ca/admissions/campus-tours" target="_blank" rel="noopener">Visit</a>
+      <a href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">Apply Now</a>
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap brandrow">
+    <a class="brand" href="https://www.lakeheadu.ca/" target="_blank" rel="noopener">
+      <div class="crest"></div>
+      <div class="brandcopy">
+        <strong>Lakehead University</strong>
+        <span>Exceptional. Unconventional.</span>
+      </div>
+    </a>
+    <div class="headtools">
+      <a href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">Admissions</a>
+      <a href="https://www.lakeheadu.ca/admissions/campus-tours" target="_blank" rel="noopener">Visit</a>
+      <a class="apply" href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">Apply Now</a>
+      <a class="search" href="https://www.lakeheadu.ca/search" target="_blank" rel="noopener">⌕</a>
+      <a class="mobilemenu" href="https://www.lakeheadu.ca/" target="_blank" rel="noopener">☰</a>
+    </div>
+  </div>
+  <nav class="mainnav">
+    <div class="wrap">
+      <a href="https://www.lakeheadu.ca/programs" target="_blank" rel="noopener">Programs</a>
+      <a href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">Admissions</a>
+      <a href="https://www.lakeheadu.ca/campus-life" target="_blank" rel="noopener">Campus Life</a>
+      <a href="https://www.lakeheadu.ca/indigenous" target="_blank" rel="noopener">Indigenous</a>
+      <a href="https://www.lakeheadu.ca/international" target="_blank" rel="noopener">International Students</a>
+      <a href="https://www.lakeheadu.ca/research-and-innovation" target="_blank" rel="noopener">Research &amp; Innovation</a>
+      <a href="https://www.lakeheadu.ca/about" target="_blank" rel="noopener">About</a>
+    </div>
+  </nav>
+</header>
+
 <main>
-<section class="hero"><img src="https://www.niu.edu/images/randomizer/mlk-commons-drone.jpg" alt="Northern Illinois University campus"><div class="wrap"><div class="hero-copy"><div class="eyebrow">Northern Illinois University</div><h1>Your Future.<br>Our Focus.</h1><p>At NIU, you'll find the people, programs and opportunities to build the future you want — in a community where Huskies support Huskies.</p><a class="btn red" href="https://www.niu.edu/admissions/apply/index.shtml" target="_blank">Apply Now</a><a class="btn out" href="https://www.niu.edu/admissions/visit/index.shtml" target="_blank">Schedule a Visit</a></div></div></section>
-<section class="actions"><div class="wrap actiongrid"><a class="action" href="https://www.niu.edu/admissions/apply/index.shtml" target="_blank"><small>Take your next step</small><strong>Apply Now</strong><span>Join our Huskie pack. →</span></a><a class="action" href="https://www.niu.edu/admissions/visit/index.shtml" target="_blank"><small>See NIU</small><strong>Schedule a Visit</strong><span>Join us in person or online. →</span></a><a class="action" href="https://enroll.niu.edu/register/requestinfo" target="_blank"><small>Stay connected</small><strong>Request More Info</strong><span>Tell us more about yourself. →</span></a></div></section>
-<section class="online"><div class="onlinegrid"><div class="onlinephoto"><img src="https://www.niu.edu/images/randomizer/davis-hall-patio.jpg" alt="NIU students"></div><div class="onlinecopy"><div class="kicker">Flexible Learning</div><h2>Advance Your Career with NIU Online Programs</h2><p>Our fully accredited degrees and certificates combine expert faculty instruction with the flexibility you need to succeed, all backed by NIU's 130-year commitment to transforming lives through education.</p><a class="btn red" href="https://www.niu.edu/online/index.shtml" target="_blank">Explore Online Programs</a></div></div></section>
-<section class="section"><div class="wrap spotgrid"><div class="portrait"><img src="https://www.niu.edu/spotlight/images/francisco-cervantes.jpg" alt="Francisco Cervantes"></div><div><div class="kicker">Huskie Spotlight</div><h2>Hear from our Huskies in their own words</h2><p class="quote">NIU has helped me find my sense of belonging through various organizations, extracurricular activities, programs and resources. Through all of these, I have been able to feel at home here.</p><div class="person"><strong>Francisco Cervantes</strong><span>Mathematical sciences, secondary education licensure major from North Riverside, IL</span></div><div class="spotlinks"><a href="https://www.niu.edu/spotlight/index.shtml" target="_blank">Meet More Huskies</a><a href="https://www.niu.edu/spotlight/index.shtml" target="_blank">View All Spotlights</a></div></div></div></section>
-<section class="stats"><div class="wrap statgrid"><div class="stat"><div><div class="num">1,193+</div><p>University Honors Students</p></div><a href="https://honors.niu.edu/" target="_blank">Honors Engaged Experiences →</a></div><div class="stat"><div><div class="num">3.39</div><p>Average high school GPA of our incoming class</p></div><a href="https://www.niu.edu/about/index.shtml" target="_blank">Learn more about NIU →</a></div><div class="stat"><div><div class="num">4,042+</div><p>Students live on campus</p></div><a href="https://www.niu.edu/housing/index.shtml" target="_blank">Live where you learn →</a></div></div></section>
-<section class="section campus"><div class="wrap campusgrid"><div class="campusphoto"><img src="https://www.niu.edu/images/randomizer/drone-altgeld-swen.jpg" alt="NIU campus"></div><div class="campuscopy"><div class="kicker">Explore NIU</div><h2>A campus built for your next chapter.</h2><p>Come see the classrooms, green spaces, residence halls and traditions that make DeKalb home for thousands of Huskies.</p><div class="campuslinks"><a href="https://www.niu.edu/admissions/visit/index.shtml" target="_blank"><span>Plan Your Visit</span><span>→</span></a><a href="https://www.niu.edu/maps/index.shtml" target="_blank"><span>Campus Maps</span><span>→</span></a><a href="https://www.niu.edu/student-life/index.shtml" target="_blank"><span>Student Life</span><span>→</span></a></div></div></div></section>
-<section class="section"><div class="wrap"><div class="sectionhead"><div><div class="kicker">Campus Calendar</div><h2>Upcoming Events</h2></div><a class="textlink" href="https://calendar.niu.edu/" target="_blank">View Full Events Calendar</a></div><div class="eventgrid"><article class="event"><div class="eventdate">Campus Life</div><h3>Find what’s happening at NIU</h3><p>Explore student organizations, performances, workshops, athletics and campus programs throughout the year.</p><a href="https://calendar.niu.edu/" target="_blank">Browse events →</a></article><article class="event"><div class="eventdate">Huskie Pride</div><h3>Connect with the NIU community</h3><p>Discover events that bring students, faculty, staff, alumni and the DeKalb community together.</p><a href="https://calendar.niu.edu/" target="_blank">See the calendar →</a></article><article class="event"><div class="eventdate">Visit NIU</div><h3>Experience campus in person</h3><p>Choose from admissions events, daily campus visits, transfer-focused programs and guided tours.</p><a href="https://www.niu.edu/admissions/visit/index.shtml" target="_blank">Plan a visit →</a></article></div></div></section>
-<section class="section news"><div class="wrap"><div class="sectionhead"><div><div class="kicker">Around NIU</div><h2>News from NIU</h2></div><a class="textlink" href="https://www.niutoday.info/" target="_blank">Read NIU Today</a></div><div class="newsgrid"><a class="newscard" href="https://www.niu.edu/student-life/informed/announcements/messages/2025/8-31-26-student-announcements.html" target="_blank"><div class="newspic"><img src="https://www.niu.edu/images/randomizer/campus-beauty-fall.jpg" alt="NIU campus in fall"></div><div class="newsbody"><small>Campus Life</small><h3>At NIU, good friends aren't hard to find</h3></div></a><a class="newscard" href="https://www.niu.edu/student-life/informed/announcements/messages/2025/8-31-26-student-announcements.html" target="_blank"><div class="newspic"><img src="https://www.niu.edu/images/randomizer/campus-beauty-east.jpg" alt="NIU campus"></div><div class="newsbody"><small>Student Experience</small><h3>The MLK Commons is the place to be</h3></div></a><a class="newscard" href="https://www.niu.edu/admissions/visit/index.shtml" target="_blank"><div class="newspic"><img src="https://www.niu.edu/images/randomizer/mlk-commons-drone.jpg" alt="Aerial NIU view"></div><div class="newsbody"><small>Admissions</small><h3>Explore flexible ways to visit Northern Illinois University</h3></div></a></div></div></section>
+<section class="hero">
+  <img src="https://www.lakeheadu.ca/sites/default/files/Sept3_MoveIn.jpg" alt="Students arriving at Lakehead University">
+  <div class="wrap">
+    <div class="herocopy">
+      <div class="eyebrow">Lakehead University</div>
+      <h1>Exceptional.<br>Unconventional.</h1>
+      <p>Challenge conventions, build meaningful connections and discover what you're capable of at Lakehead University.</p>
+      <a class="btn btn-red" href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">Apply Now</a>
+      <a class="btn btn-outline" href="https://www.lakeheadu.ca/admissions/campus-tours" target="_blank" rel="noopener">Visit Lakehead</a>
+    </div>
+  </div>
+</section>
+
+<section class="quick">
+  <div class="wrap quickgrid">
+    <a href="https://www.lakeheadu.ca/programs" target="_blank" rel="noopener"><small>Find your path</small><strong>Programs</strong><i>→</i></a>
+    <a href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener"><small>Start here</small><strong>Admissions</strong><i>→</i></a>
+    <a href="https://www.lakeheadu.ca/campus-life" target="_blank" rel="noopener"><small>At Lakehead</small><strong>Campus Life</strong><i>→</i></a>
+    <a href="https://www.lakeheadu.ca/research-and-innovation" target="_blank" rel="noopener"><small>Discover</small><strong>Research</strong><i>→</i></a>
+  </div>
+</section>
+
+<section class="section wolves">
+  <div class="wrap wolvesgrid">
+    <div class="wolvesphoto">
+      <img src="https://www.lakeheadu.ca/sites/default/files/uploads/104/Orientation/Images/orientationfun.jpg" alt="Lakehead Thunderwolves students at orientation">
+    </div>
+    <div class="wolvestext">
+      <div class="kicker">Hear from our Thunderwolves</div>
+      <h2>Find your place at Lakehead.</h2>
+      <p>At Lakehead University you'll join a community that will push you to defy limitations and challenge conventions. Meet the students, faculty, alumni and members of the university community who make Lakehead distinctive.</p>
+      <div class="points">
+        <div class="point"><div class="num">01</div><strong>Professors know more than just your student number and grade.</strong></div>
+        <div class="point"><div class="num">02</div><strong>A small and supportive community with room for academic growth and success.</strong></div>
+        <div class="point"><div class="num">03</div><strong>Dare to be different and create connections that last a lifetime.</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section explore">
+  <div class="wrap">
+    <div class="kicker">Explore Lakehead</div>
+    <h2>Make your next move.</h2>
+    <div class="audience"><span>I am a</span><select><option>Select</option><option>Future Student</option><option>Current Student</option><option>Graduate Student</option><option>International Student</option><option>Parent or Supporter</option></select></div>
+    <div class="exploregrid">
+      <a class="explorecard" href="https://www.lakeheadu.ca/programs" target="_blank" rel="noopener"><div class="n">01</div><div><h3>Find your program</h3><p>Find a program that matches your interests and aspirations.</p></div><div class="arr">→</div></a>
+      <a class="explorecard" href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener"><div class="n">02</div><div><h3>How to apply</h3><p>Learn how to apply and start your Lakehead journey.</p></div><div class="arr">→</div></a>
+      <a class="explorecard" href="https://www.lakeheadu.ca/admissions/campus-tours" target="_blank" rel="noopener"><div class="n">03</div><div><h3>Campus Tours</h3><p>Experience the highlights of Lakehead's campuses with a tour guide.</p></div><div class="arr">→</div></a>
+      <a class="explorecard" href="https://www.lakeheadu.ca/admissions/admission-requirements/applying-to-lakehead" target="_blank" rel="noopener"><div class="n">04</div><div><h3>Application Deadlines</h3><p>Make sure you're ready for the next intake.</p></div><div class="arr">→</div></a>
+      <a class="explorecard" href="https://www.lakeheadu.ca/students/finances/student-fees" target="_blank" rel="noopener"><div class="n">05</div><div><h3>Tuition &amp; fees</h3><p>Understand costs and fees associated with your program.</p></div><div class="arr">→</div></a>
+      <a class="explorecard" href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener"><div class="n">06</div><div><h3>Stay Connected</h3><p>Receive invitations, updates and information from Lakehead.</p></div><div class="arr">→</div></a>
+    </div>
+  </div>
+</section>
+
+<section class="campus">
+  <div class="campusgrid">
+    <div class="campusphoto"><img src="https://www.lakeheadu.ca/sites/default/files/uploads/293/images/orientation/Lake-Tamblyn-resized.jpg" alt="Lake Tamblyn at Lakehead University"></div>
+    <div class="campuscopy">
+      <div class="kicker">Life at Lakehead</div>
+      <h2>Two campuses. One Thunderwolf community.</h2>
+      <p>Explore Thunder Bay and Orillia, discover student life, residence, athletics, campus services and the communities surrounding Lakehead.</p>
+      <div>
+        <a class="btn btn-red" href="https://www.lakeheadu.ca/campus-life" target="_blank" rel="noopener">Discover Lakehead</a>
+        <a class="btn btn-outline" href="https://virtualtour.lakeheadu.ca/" target="_blank" rel="noopener">Virtual Tour</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sectionhead">
+      <div><div class="kicker">Campus Connection</div><h2>News &amp; Stories</h2></div>
+      <a class="textlink" href="https://www.lakeheadu.ca/about/news-and-events" target="_blank" rel="noopener">View Campus Connection</a>
+    </div>
+    <div class="newsgrid">
+      <a class="newscard" href="https://www.lakeheadu.ca/about/news-and-events/news/archive/node/351463" target="_blank" rel="noopener">
+        <div class="newspic"><img src="https://www.lakeheadu.ca/sites/default/files/Sept3_MoveIn.jpg" alt="Lakehead University move-in day"></div>
+        <div class="newsbody"><div class="newsdate">September 3, 2026</div><h3>Lakehead University welcomes students and faculty for the start of a new academic year</h3><p>A new academic year is about to begin across Lakehead's campuses.</p></div>
+      </a>
+      <a class="newscard" href="https://www.lakeheadu.ca/about/news-and-events/news/archive/2026/node/351448" target="_blank" rel="noopener">
+        <div class="newspic"><img src="https://www.lakeheadu.ca/sites/default/files/uploads/113/Home/PepRally20%20_resize.jpg" alt="Lakehead student"></div>
+        <div class="newsbody"><div class="newsdate">September 2, 2026</div><h3>Death is Something We Should Tackle Head On</h3><p>Dr. Kathy Kortes-Miller wants us to talk about the ultimate taboo.</p></div>
+      </a>
+      <a class="newscard" href="https://www.lakeheadu.ca/about/news-and-events/news/archive/2026/node/351392" target="_blank" rel="noopener">
+        <div class="newspic"><img src="https://www.lakeheadu.ca/sites/default/files/uploads/293/images/orientation/future_resized.jpg" alt="Lakehead community member overlooking the water"></div>
+        <div class="newsbody"><div class="newsdate">September 1, 2026</div><h3>Chris Adams Named First Entrepreneur-in-Residence</h3><p>Adams will expand Lakehead's entrepreneurial potential.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section events">
+  <div class="wrap">
+    <div class="sectionhead">
+      <div><div class="kicker">What's Happening</div><h2>Events</h2></div>
+      <a class="textlink" href="https://www.lakeheadu.ca/about/news-and-events/events" target="_blank" rel="noopener">View Event Calendar</a>
+    </div>
+    <div class="eventgrid">
+      <article class="event"><div class="eventdate">SEP <strong>5</strong></div><h3>Barrie Downtown Adventure</h3><p>10:00 AM to 2:00 PM / Meet Outside of 24 Maple / Barrie STEM Hub</p><a href="https://www.lakeheadu.ca/students/orientation/events/archive/node/349713" target="_blank" rel="noopener">Event details →</a></article>
+      <article class="event"><div class="eventdate">SEP <strong>5</strong></div><h3>(OR) Downtown Adventure</h3><p>10:00 AM to 2:00 PM / Meet Outside of Simcoe Hall / Orillia</p><a href="https://www.lakeheadu.ca/students/orientation/events/archive/node/349223" target="_blank" rel="noopener">Event details →</a></article>
+      <article class="event"><div class="eventdate">SEP <strong>5</strong></div><h3>Downtown Adventure</h3><p>11:00 AM / Agora Circle Bus Loop to Marina Park / Thunder Bay</p><a href="https://www.lakeheadu.ca/students/orientation/events/archive/node/349050" target="_blank" rel="noopener">Event details →</a></article>
+      <article class="event"><div class="eventdate">SEP <strong>5</strong></div><h3>Glow Party</h3><p>8:00 PM to 11:00 PM / The Outpost / Thunder Bay</p><a href="https://www.lakeheadu.ca/students/orientation/events/archive/node/349900" target="_blank" rel="noopener">Event details →</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="section tours">
+  <div class="wrap">
+    <div class="sectionhead"><div><div class="kicker">Explore From Anywhere</div><h2>Virtual Tours</h2></div></div>
+    <div class="tourgrid">
+      <a class="tour" href="https://virtualtour.lakeheadu.ca/" target="_blank" rel="noopener">
+        <img src="https://www.lakeheadu.ca/sites/default/files/uploads/293/images/orientation/Lake-Tamblyn-resized.jpg" alt="Thunder Bay campus">
+        <div class="tourcopy"><small>Virtual Tour</small><h3>Thunder Bay</h3></div>
+      </a>
+      <a class="tour" href="https://virtualtour.lakeheadu.ca/" target="_blank" rel="noopener">
+        <img src="https://www.lakeheadu.ca/sites/default/files/uploads/104/Orientation/Images/orientationfun.jpg" alt="Lakehead students">
+        <div class="tourcopy"><small>Virtual Tour</small><h3>Orillia</h3></div>
+      </a>
+    </div>
+  </div>
+</section>
 </main>
-<footer><div class="wrap"><div class="footgrid"><div><div class="footbrand"><div class="shield">NIU</div><div class="brandcopy"><strong>Northern Illinois University</strong><span>Your Future. Our Focus.</span></div></div><address>Northern Illinois University<br>1425 W. Lincoln Hwy.<br>DeKalb, IL 60115</address></div><div><h4>Explore NIU</h4><a href="https://www.niu.edu/admissions/index.shtml" target="_blank">Admissions</a><a href="https://www.niu.edu/academics/index.shtml" target="_blank">Academics</a><a href="https://www.niu.edu/student-life/index.shtml" target="_blank">Student Life</a><a href="https://www.niu.edu/research/index.shtml" target="_blank">Research</a></div><div><h4>Resources</h4><a href="https://www.niu.edu/current-students/index.shtml" target="_blank">Students</a><a href="https://www.niu.edu/faculty-staff/index.shtml" target="_blank">Faculty &amp; Staff</a><a href="https://www.niu.edu/alumni/index.shtml" target="_blank">Alumni</a><a href="https://directory.niu.edu/" target="_blank">Directory</a></div><div><h4>Quick Links</h4><a href="https://calendar.niu.edu/" target="_blank">Calendar</a><a href="https://www.niu.edu/maps/index.shtml" target="_blank">Maps</a><a href="https://www.niu.edu/accessibility/index.shtml" target="_blank">Accessibility</a><a href="https://www.niu.edu/contact/index.shtml" target="_blank">Contact</a></div></div><div class="footbottom"><div>© Board of Trustees of Northern Illinois University. All rights reserved.</div><div>DeKalb, Illinois</div></div></div></footer>
+
+<footer>
+  <div class="wrap">
+    <div class="footgrid">
+      <div>
+        <div class="footbrand"><div class="crest"></div><div class="brandcopy"><strong>Lakehead University</strong><span>Exceptional. Unconventional.</span></div></div>
+        <address>Thunder Bay Campus<br>955 Oliver Road, Thunder Bay, ON P7B 5E1<br>(807) 343-8110</address>
+      </div>
+      <div><h4>Explore</h4><a href="https://www.lakeheadu.ca/programs" target="_blank" rel="noopener">Programs</a><a href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">Admissions</a><a href="https://www.lakeheadu.ca/campus-life" target="_blank" rel="noopener">Campus Life</a><a href="https://www.lakeheadu.ca/research-and-innovation" target="_blank" rel="noopener">Research &amp; Innovation</a></div>
+      <div><h4>Resources</h4><a href="https://www.lakeheadu.ca/students" target="_blank" rel="noopener">Students</a><a href="https://www.lakeheadu.ca/faculty-and-staff" target="_blank" rel="noopener">Faculty &amp; Staff</a><a href="https://library.lakeheadu.ca/" target="_blank" rel="noopener">Library</a><a href="https://myportal.lakeheadu.ca/" target="_blank" rel="noopener">myPortal</a></div>
+      <div><h4>Lakehead</h4><a href="https://www.lakeheadu.ca/about" target="_blank" rel="noopener">About</a><a href="https://www.lakeheadu.ca/about/contact-us" target="_blank" rel="noopener">Contact Us</a><a href="https://www.lakeheadu.ca/about/accessibility" target="_blank" rel="noopener">Accessibility</a><a href="https://www.lakeheadu.ca/about/privacy" target="_blank" rel="noopener">Privacy</a></div>
+    </div>
+    <div class="footbottom">
+      <div>Lakehead University — Thunder Bay &amp; Orillia, Ontario</div>
+      <div class="mini"><a href="https://www.lakeheadu.ca/about/contact-us" target="_blank" rel="noopener">Contact</a><a href="https://www.lakeheadu.ca/about/accessibility" target="_blank" rel="noopener">Accessibility</a><a href="https://www.lakeheadu.ca/about/privacy" target="_blank" rel="noopener">Privacy</a></div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
