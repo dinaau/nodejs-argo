@@ -3,662 +3,738 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lakehead University</title>
-<meta name="description" content="Lakehead University">
+<title>UA System | University of Alaska System</title>
 <style>
 :root{
-  --cobalt:#005a8b;
-  --cobalt-dark:#00446f;
-  --blaze:#ffc20e;
-  --ink:#252525;
-  --light:#f3f3f1;
-  --line:#d6d6d3;
-  --max:1320px;
+  --ua-blue:#00558c;
+  --ua-dark:#003b63;
+  --ua-mid:#0a6b9f;
+  --gold:#f4b223;
+  --text:#333;
+  --muted:#666;
+  --line:#d7dde1;
+  --light:#f5f7f8;
+  --max:1180px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;color:var(--ink);background:#fff;font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
-
-/* very top */
-.topbar{
-  background:var(--cobalt-dark);
-  color:#fff;
-  border-bottom:1px solid rgba(255,255,255,.18);
+html,body{margin:0;padding:0}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--text);
+  background:#fff;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
 }
-.topbar .wrap{
-  min-height:36px;
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{width:min(var(--max),calc(100% - 34px));margin:auto}
+
+/* top utility */
+.utility{
+  background:var(--ua-dark);
+  color:#fff;
+  font-size:12px;
+}
+.utility .container{
+  min-height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:22px;
+}
+.utility span{opacity:.96}
+
+/* main header */
+.header{
+  background:#fff;
+  border-bottom:1px solid #cfd8de;
+  box-shadow:0 1px 3px rgba(0,0,0,.06);
+}
+.header-main{
+  min-height:88px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:26px;
-  font-size:12px;
-  font-weight:700;
+  gap:28px;
 }
-.campuses{letter-spacing:.06em;text-transform:uppercase}
-.toplinks{display:flex;align-items:center;gap:24px}
-.toplinks a{opacity:.94}
-.toplinks a:hover{text-decoration:underline}
-.toplinks .apply{
-  border:1px solid rgba(255,255,255,.65);
-  padding:6px 10px;
-  text-transform:uppercase;
-  letter-spacing:.05em;
+.logo-wrap img{width:300px;height:auto}
+.search{
+  font-size:13px;
+  color:#555;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.search-box{
+  width:180px;
+  height:34px;
+  border:1px solid #b8c3ca;
+  background:#fff;
+  padding:0 10px;
+  color:#777;
+}
+.search-btn{
+  width:36px;height:34px;
+  display:grid;place-items:center;
+  background:var(--ua-blue);
+  color:#fff;
+  font-weight:bold;
+}
+.nav{
+  background:#f7f8f9;
+  border-top:1px solid #e3e7ea;
+  border-bottom:1px solid #d1d8dc;
+}
+.nav .container{
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  gap:0;
+}
+.nav-item{
+  position:relative;
+  height:48px;
+  padding:0 24px;
+  display:flex;
+  align-items:center;
+  color:#264b64;
+  font-weight:700;
+  font-size:14px;
+  border-right:1px solid #d9dee2;
+}
+.nav-item:first-child{border-left:1px solid #d9dee2}
+.nav-item:after{
+  content:"▼";
+  font-size:8px;
+  margin-left:8px;
+  color:#718491;
 }
 
-/* hero / integrated header */
+/* slider */
 .hero{
   position:relative;
-  min-height:690px;
+  height:500px;
   overflow:hidden;
-  color:#fff;
-  background:#4a4a4a;
+  background:#1b2c38;
 }
-.hero-bg{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+.slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition:opacity .65s ease;
 }
-.hero:after{
+.slide.active{opacity:1}
+.slide img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.slide:after{
   content:"";
-  position:absolute;inset:0;
-  background:
-    linear-gradient(to bottom,rgba(0,0,0,.54) 0,rgba(0,0,0,.13) 32%,rgba(0,0,0,.1) 56%,rgba(0,0,0,.64) 100%);
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(0,0,0,.67),rgba(0,0,0,.24) 55%,rgba(0,0,0,.06));
 }
-.hero-header{
-  position:relative;z-index:4;
-  border-bottom:1px solid rgba(255,255,255,.35);
-}
-.hero-headrow{
-  min-height:106px;
-  display:flex;align-items:center;justify-content:space-between;gap:30px;
-}
-.logo{
-  display:flex;align-items:center;gap:15px;
-}
-.shield{
-  width:54px;height:63px;border-radius:2px 2px 10px 10px;overflow:hidden;
-  background:linear-gradient(#c9202f 0 33%,#ffc20e 33% 47%,#fff 47% 56%,#005a8b 56% 100%);
-  box-shadow:0 0 0 1px rgba(255,255,255,.25);
-}
-.logotype{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:34px;
-  line-height:.92;
-  font-weight:700;
-  letter-spacing:-.025em;
-}
-.logotype span{
-  display:block;
-  font-family:Arial,Helvetica,sans-serif;
-  font-size:11px;
-  letter-spacing:.34em;
-  margin-top:10px;
-  text-transform:uppercase;
-}
-.search{
-  width:42px;height:42px;
-  border:1px solid rgba(255,255,255,.7);
-  display:grid;place-items:center;
-  font-size:22px;
-  background:rgba(0,0,0,.14);
-}
-.mainnav{
-  position:relative;z-index:4;
-  border-bottom:1px solid rgba(255,255,255,.26);
-}
-.mainnav .wrap{
-  min-height:58px;
-  display:flex;align-items:center;justify-content:flex-end;gap:38px;
-}
-.mainnav a{
-  min-height:58px;
-  display:flex;align-items:center;
-  font-size:13px;font-weight:700;
-  border-bottom:4px solid transparent;
-}
-.mainnav a:hover{border-bottom-color:var(--blaze)}
-.mobile{display:none}
 .hero-content{
-  position:relative;z-index:3;
-  min-height:525px;
-  display:flex;align-items:flex-end;
-  padding-bottom:88px;
-}
-.hero-copy{width:min(720px,72%)}
-.hero-tag{
-  width:min(485px,86%);
-  margin-bottom:21px;
-}
-.hero-tag img{width:100%;height:auto}
-.hero h1{
-  margin:0 0 17px;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(44px,5.2vw,72px);
-  line-height:.98;
-  letter-spacing:-.035em;
-}
-.hero p{
-  font-size:20px;line-height:1.48;
-  margin:0 0 26px;
-  max-width:700px;
-}
-.cta{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  min-height:52px;padding:0 22px;
-  background:var(--blaze);color:#161616;
-  font-size:14px;font-weight:900;
-}
-.cta:hover{background:#ffd044}
-.hero-dots{
-  position:absolute;z-index:5;right:34px;bottom:35px;
-  display:flex;gap:9px
-}
-.hero-dots i{display:block;width:9px;height:9px;border-radius:50%;border:1px solid #fff}
-.hero-dots i:first-child{background:#fff}
-
-/* hero tabs */
-.hero-tabs{
   position:relative;
-  margin-top:-42px;
-  z-index:7;
+  z-index:2;
+  height:100%;
+  display:flex;
+  align-items:center;
 }
-.tabgrid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  background:#fff;
-  box-shadow:0 3px 12px rgba(0,0,0,.15);
+.hero-box{
+  color:white;
+  max-width:530px;
+  text-shadow:0 1px 2px rgba(0,0,0,.35);
 }
-.tab{
-  min-height:84px;
-  padding:19px 24px;
-  border-right:1px solid #ddd;
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
+.hero-eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-weight:700;
+  font-size:19px;
+  margin-bottom:8px;
+}
+.hero-title{
   font-family:Georgia,"Times New Roman",serif;
-  font-size:18px;
+  font-weight:400;
+  font-size:45px;
+  line-height:1.06;
+  margin:0 0 18px;
+}
+.hero-button{
+  display:inline-block;
+  background:#fff;
+  color:var(--ua-blue);
+  padding:11px 18px;
+  border-radius:2px;
+  font-weight:700;
+  font-size:13px;
+  text-shadow:none;
+}
+.hero-controls{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  bottom:18px;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+.dot{
+  width:11px;height:11px;
+  border:1px solid #fff;
+  border-radius:50%;
+  background:transparent;
+}
+.dot.active{background:#fff}
+.arrow{
+  color:#fff;
+  font-size:22px;
+  width:28px;
+  text-align:center;
+}
+
+/* admissions/system bar */
+.mega{
+  border-bottom:1px solid #d6dce0;
+  background:#fff;
+}
+.mega .container{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  min-height:58px;
+}
+.mega-label{
+  display:flex;
+  align-items:center;
+  font-weight:700;
+  color:var(--ua-dark);
+  border-right:1px solid #d8dee1;
+  padding:0 18px;
+}
+.mega-links{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  flex-wrap:wrap;
+  padding:12px 20px;
+  color:#31596f;
+  font-size:13px;
+}
+.mega-links span{white-space:nowrap}
+
+/* general sections */
+.section{padding:54px 0}
+.section.gray{background:#f5f6f7}
+h2{
+  margin:0 0 26px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:30px;
+  font-weight:400;
+  color:var(--ua-dark);
+}
+.center{text-align:center}
+.prospective-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line);
+}
+.prospective-card{
+  min-height:185px;
+  padding:24px 22px;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:#fff;
+}
+.prospective-card h3{
+  margin:0 0 12px;
+  color:var(--ua-blue);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:21px;
+  font-weight:400;
+}
+.prospective-card p{
+  font-size:14px;
+  color:#626b71;
+  margin:0;
+}
+.discover{
+  margin-top:24px;
+  display:inline-block;
+  color:#fff;
+  background:var(--ua-blue);
+  padding:10px 15px;
+  font-size:13px;
   font-weight:700;
 }
-.tab:first-child{border-top:5px solid var(--cobalt)}
-.tab:nth-child(2){border-top:5px solid var(--blaze)}
-.tab:nth-child(3){border-top:5px solid #777}
-.tab:hover{background:#f7f7f5}
 
-/* generic */
-section{padding:82px 0}
-.section-title{
-  margin:0 0 34px;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:48px;
-  line-height:1;
-  color:var(--cobalt);
+/* campaigns */
+.campaign-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
 }
-.rule{
-  width:58px;height:5px;background:var(--blaze);
-  margin:0 0 28px;
-}
-
-/* thunderwolves */
-.wolves{
-  padding-top:112px;
-}
-.wolves-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:58px;align-items:start
-}
-.wolves-copy p{
-  font-size:17px;line-height:1.65;color:#555;margin:0 0 22px
-}
-.wolves-points{
-  display:grid;gap:18px;margin-top:28px
-}
-.wolf-point{
-  display:grid;grid-template-columns:28px 1fr;gap:13px;
-  font-size:16px;line-height:1.5
-}
-.wolf-point:before{
-  content:"";
-  width:18px;height:18px;
-  border-radius:50%;
-  border:5px solid var(--blaze);
-  margin-top:3px;
-}
-.wolves-media{
+.campaign{
+  min-height:180px;
+  color:#fff;
   position:relative;
-  height:460px;
   overflow:hidden;
-  background:#ddd;
+  display:flex;
+  align-items:flex-end;
+  background:var(--ua-blue);
 }
-.wolves-media img{width:100%;height:100%;object-fit:cover}
-.play{
-  position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);
-  width:72px;height:72px;border-radius:50%;
-  background:rgba(0,90,139,.9);color:#fff;
-  display:grid;place-items:center;font-size:26px;
+.campaign:nth-child(2){background:#254f73}
+.campaign:nth-child(3){background:#17709c}
+.campaign:nth-child(4){background:#4d6476}
+.campaign:before{
+  content:"";
+  position:absolute;
+  width:160px;height:160px;
+  border:28px solid rgba(255,255,255,.08);
+  border-radius:50%;
+  right:-56px;top:-54px;
 }
-
-/* explore */
-.explore{background:#f5f5f4}
-.explore-top{
-  display:flex;align-items:center;gap:15px;margin-bottom:34px
-}
-.explore-top label{font-size:17px;font-weight:700}
-.explore-top select{
-  width:275px;height:48px;padding:0 13px;
-  border:1px solid #999;background:#fff;font-size:15px
-}
-.explore-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:18px
-}
-.ex-card{
-  background:#fff;border:1px solid #ddd;
-  min-height:215px;padding:27px;
-  display:flex;flex-direction:column;
-  box-shadow:0 1px 2px rgba(0,0,0,.03)
-}
-.ex-card h3{
-  margin:0 0 12px;
+.campaign-text{position:relative;padding:20px}
+.campaign strong{
   font-family:Georgia,"Times New Roman",serif;
-  font-size:25px;color:var(--cobalt)
+  font-size:22px;
+  line-height:1.1;
+  display:block;
+  margin-bottom:8px;
 }
-.ex-card p{margin:0;color:#666;line-height:1.5;font-size:14px}
-.ex-card a{margin-top:auto;padding-top:25px;color:var(--cobalt);font-weight:800;font-size:13px}
-.ex-card a:hover{text-decoration:underline}
+.campaign span{font-size:12px;line-height:1.35;color:#e4edf3}
 
 /* news */
-.news-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:25px
+.news-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:20px;
 }
-.news-card{border-top:6px solid var(--cobalt)}
-.news-img{aspect-ratio:16/9;overflow:hidden;background:#ddd}
-.news-img img{width:100%;height:100%;object-fit:cover}
-.news-date{color:#777;font-size:12px;margin-top:18px}
-.news-card h3{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:22px;line-height:1.18;
-  color:var(--cobalt);margin:8px 0 9px
+.news-head h2{margin:0}
+.news-columns{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:26px;
 }
-.news-card p{font-size:14px;color:#666;line-height:1.5;margin:0}
-.more{
-  display:inline-block;margin-top:28px;
-  color:var(--cobalt);font-weight:800;font-size:13px;
-  border-bottom:2px solid var(--blaze);padding-bottom:4px
+.news-col h3{
+  margin:0 0 17px;
+  color:#4a555d;
+  font-size:18px;
+  font-weight:400;
+  border-bottom:4px solid var(--ua-blue);
+  padding-bottom:10px;
+}
+.news-col:nth-child(2) h3{border-color:#6d8190}
+.news-col:nth-child(3) h3{border-color:#d6a31b}
+.story{
+  display:grid;
+  grid-template-columns:90px 1fr;
+  gap:14px;
+  padding:0 0 18px;
+  margin-bottom:18px;
+  border-bottom:1px solid #e0e4e6;
+}
+.story img{
+  width:90px;height:75px;
+  object-fit:cover;
+  background:#ddd;
+}
+.story-title{
+  color:var(--ua-blue);
+  font-weight:700;
+  line-height:1.25;
+  font-size:14px;
+  margin-bottom:5px;
+}
+.story-date{font-size:11px;color:#888;margin-bottom:5px}
+.story p{font-size:12px;color:#666;margin:0;line-height:1.35}
+.more-link{
+  display:inline-block;
+  color:var(--ua-blue);
+  font-size:13px;
+  font-weight:700;
 }
 
-/* events */
-.events{background:var(--cobalt);color:#fff}
-.events .section-title{color:#fff}
-.event-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  border-top:1px solid rgba(255,255,255,.45);
-  border-left:1px solid rgba(255,255,255,.45);
+/* facts */
+.facts{
+  background:var(--ua-blue);
+  color:#fff;
+  padding:48px 0;
 }
-.event{
-  padding:24px;
-  min-height:235px;
-  border-right:1px solid rgba(255,255,255,.45);
-  border-bottom:1px solid rgba(255,255,255,.45);
-  display:flex;flex-direction:column
+.facts h2{color:#fff;text-align:center}
+.fact-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  border-top:1px solid rgba(255,255,255,.28);
+  border-left:1px solid rgba(255,255,255,.28);
 }
-.event-date{
-  display:flex;align-items:baseline;gap:7px;
-  color:var(--blaze);font-weight:900;text-transform:uppercase;
-  margin-bottom:20px
+.fact{
+  min-height:140px;
+  border-right:1px solid rgba(255,255,255,.28);
+  border-bottom:1px solid rgba(255,255,255,.28);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:18px;
 }
-.event-date strong{font-family:Georgia,"Times New Roman",serif;font-size:33px}
-.event h3{
-  margin:0 0 12px;
+.fact strong{
+  display:block;
   font-family:Georgia,"Times New Roman",serif;
-  font-size:20px;line-height:1.2
+  font-size:34px;
+  font-weight:400;
+  margin-bottom:8px;
 }
-.event p{font-size:13px;line-height:1.5;color:#d9e7ef;margin:0 0 18px}
-.event a{margin-top:auto;font-size:12px;font-weight:800;color:#fff;text-decoration:underline}
+.fact span{font-size:12px;line-height:1.35;color:#e4edf3}
 
-/* virtual */
-.tours{background:#fff}
-.tour-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:24px
+/* traditions */
+.traditions{
+  padding:54px 0;
+  text-align:center;
+  background:#fff;
 }
-.tour{
-  height:360px;position:relative;overflow:hidden;color:#fff
+.traditions .logo-large{
+  width:390px;
+  max-width:90%;
+  margin:0 auto 24px;
 }
-.tour img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.tour:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.68),rgba(0,0,0,.08))}
-.tour-copy{position:absolute;z-index:2;left:28px;bottom:25px}
-.tour-copy small{display:block;text-transform:uppercase;letter-spacing:.12em;font-weight:900;margin-bottom:6px}
-.tour-copy strong{font-family:Georgia,"Times New Roman",serif;font-size:31px}
+.traditions h3{
+  margin:0 0 10px;
+  font-family:Georgia,"Times New Roman",serif;
+  color:var(--ua-dark);
+  font-size:22px;
+}
+.traditions p{
+  max-width:820px;
+  margin:0 auto;
+  color:#5e666b;
+  font-size:15px;
+  line-height:1.6;
+}
 
 /* footer */
 footer{
-  background:#173a56;color:#fff;
-  padding:54px 0 26px;
-  border-top:6px solid var(--blaze)
+  background:#263d4d;
+  color:#fff;
+  padding:38px 0 24px;
 }
 .footer-grid{
-  display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:45px
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:40px;
 }
-.footer-logo{display:flex;align-items:center;gap:13px;margin-bottom:18px}
-.footer-logo .logotype{font-size:27px}
-.footer-logo .logotype span{font-size:9px}
-address{font-style:normal;color:#cad8e2;line-height:1.6;font-size:13px}
-footer h4{margin:0 0 13px;color:var(--blaze);font-size:12px;text-transform:uppercase;letter-spacing:.1em}
-footer a{display:block;color:#e1ebf1;padding:5px 0;font-size:13px}
-footer a:hover{text-decoration:underline}
+.footer-title{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:20px;
+  margin-bottom:13px;
+}
+.footer-copy{
+  color:#d2dce2;
+  font-size:13px;
+  line-height:1.6;
+}
+.footer-right{text-align:right}
 .footer-bottom{
-  border-top:1px solid rgba(255,255,255,.25);
-  margin-top:38px;padding-top:20px;
-  display:flex;justify-content:space-between;gap:20px;
-  color:#c5d5de;font-size:11px
+  border-top:1px solid rgba(255,255,255,.18);
+  margin-top:28px;
+  padding-top:20px;
+  color:#c0ccd3;
+  font-size:11px;
+  line-height:1.55;
 }
 
-@media(max-width:1050px){
-  .mainnav .wrap{gap:22px}
-  .mainnav a{font-size:12px}
-  .explore-grid{grid-template-columns:1fr 1fr}
-  .event-grid{grid-template-columns:1fr 1fr}
-  .footer-grid{grid-template-columns:1.35fr 1fr 1fr}
-  .footer-grid>div:last-child{display:none}
+/* disable click affordances */
+button,input,select,a{cursor:default}
+a{pointer-events:none}
+
+@media(max-width:900px){
+  .prospective-grid,.campaign-grid{grid-template-columns:1fr 1fr}
+  .news-columns{grid-template-columns:1fr}
+  .fact-grid{grid-template-columns:1fr 1fr}
+  .fact:last-child{grid-column:1/-1}
+  .nav .container{overflow-x:auto}
+  .nav-item{white-space:nowrap}
 }
-@media(max-width:780px){
-  .wrap{width:calc(100% - 28px)}
-  .campuses{display:none}
-  .toplinks a:nth-child(-n+3){display:none}
-  .hero-headrow{min-height:88px}
-  .shield{width:43px;height:51px}
-  .logotype{font-size:26px}
-  .logotype span{font-size:8px}
+@media(max-width:640px){
+  .container{width:calc(100% - 24px)}
+  .utility{display:none}
+  .header-main{min-height:74px}
+  .logo-wrap img{width:235px}
   .search{display:none}
-  .mainnav{display:none}
-  .mobile{display:grid;width:42px;height:42px;border:1px solid #fff;place-items:center;font-size:22px}
-  .hero,.hero-content{min-height:580px}
-  .hero-content{padding-bottom:72px}
-  .hero-copy{width:90%}
-  .hero h1{font-size:51px}
-  .hero p{font-size:18px}
-  .tabgrid{grid-template-columns:1fr}
-  .hero-tabs{margin-top:-24px}
-  .tab{min-height:68px}
-  section{padding:64px 0}
-  .wolves{padding-top:86px}
-  .wolves-grid{grid-template-columns:1fr}
-  .wolves-media{height:390px}
-  .explore-grid{grid-template-columns:1fr}
-  .news-grid{grid-template-columns:1fr}
-  .event-grid{grid-template-columns:1fr}
-  .tour-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr 1fr}
-  .footer-grid>div:last-child{display:block}
-  .footer-grid>div:first-child{grid-column:1/-1}
-}
-@media(max-width:480px){
-  .toplinks a:not(.apply){display:none}
-  .hero-copy{width:100%}
-  .hero h1{font-size:43px}
-  .hero p{font-size:16px}
-  .hero-tag{width:94%}
-  .section-title{font-size:40px}
-  .explore-top{align-items:flex-start;flex-direction:column}
-  .explore-top select{width:100%}
+  .nav .container{justify-content:flex-start}
+  .hero{height:430px}
+  .hero-title{font-size:35px}
+  .hero-box{max-width:88%}
+  .mega .container{grid-template-columns:1fr}
+  .mega-label{border-right:0;border-bottom:1px solid #ddd;min-height:46px}
+  .prospective-grid,.campaign-grid{grid-template-columns:1fr}
+  .fact-grid{grid-template-columns:1fr}
+  .fact:last-child{grid-column:auto}
   .footer-grid{grid-template-columns:1fr}
-  .footer-grid>div:first-child{grid-column:auto}
-  .footer-bottom{flex-direction:column}
+  .footer-right{text-align:left}
 }
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <div class="wrap">
-    <div class="campuses">Thunder Bay • Orillia • Barrie</div>
-    <div class="toplinks">
-      <a href="https://www.lakeheadu.ca/students" target="_blank" rel="noopener">STUDENTS</a>
-      <a href="https://www.lakeheadu.ca/faculty-and-staff" target="_blank" rel="noopener">FACULTY &amp; STAFF</a>
-      <a href="https://www.lakeheadu.ca/alumni" target="_blank" rel="noopener">ALUMNI</a>
-      <a href="https://ec.lakeheadu.ca/" target="_blank" rel="noopener">DONATE</a>
-      <a href="https://www.lakeheadu.ca/admissions/campus-tours" target="_blank" rel="noopener">VISIT</a>
-      <a class="apply" href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">APPLY NOW</a>
-    </div>
+<div class="utility">
+  <div class="container">
+    <span>Students</span>
+    <span>Faculty &amp; Staff</span>
+    <span>Alumni</span>
+    <span>Give</span>
   </div>
 </div>
 
-<section class="hero">
-  <img class="hero-bg" src="https://www.lakeheadu.ca/sites/default/files/Sept3_MoveIn.jpg" alt="Lakehead University students">
-  <div class="hero-header">
-    <div class="wrap hero-headrow">
-      <a class="logo" href="https://www.lakeheadu.ca/" target="_blank" rel="noopener">
-        <div class="shield"></div>
-        <div class="logotype">Lakehead<span>University</span></div>
-      </a>
-      <a class="search" href="https://www.lakeheadu.ca/search" target="_blank" rel="noopener" aria-label="Search">⌕</a>
-      <a class="mobile" href="https://www.lakeheadu.ca/" target="_blank" rel="noopener">☰</a>
+<header class="header">
+  <div class="container header-main">
+    <div class="logo-wrap">
+      <img src="https://www.alaska.edu/opa/images/UALOGO-400x100.jpg" alt="University of Alaska">
+    </div>
+    <div class="search">
+      <input class="search-box" value="" aria-label="Search">
+      <div class="search-btn">⌕</div>
     </div>
   </div>
-
-  <nav class="mainnav">
-    <div class="wrap">
-      <a href="https://www.lakeheadu.ca/programs" target="_blank" rel="noopener">Programs</a>
-      <a href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">Admissions</a>
-      <a href="https://www.lakeheadu.ca/campus-life" target="_blank" rel="noopener">Campus Life</a>
-      <a href="https://www.lakeheadu.ca/indigenous" target="_blank" rel="noopener">Indigenous</a>
-      <a href="https://www.lakeheadu.ca/international" target="_blank" rel="noopener">International Students</a>
-      <a href="https://www.lakeheadu.ca/research-and-innovation" target="_blank" rel="noopener">Research and Innovation</a>
-      <a href="https://www.lakeheadu.ca/about" target="_blank" rel="noopener">About</a>
+  <nav class="nav">
+    <div class="container">
+      <div class="nav-item">Admissions</div>
+      <div class="nav-item">UA System</div>
     </div>
   </nav>
+</header>
 
-  <div class="wrap hero-content">
-    <div class="hero-copy">
-      <div class="hero-tag">
-        <img src="https://www.lakeheadu.ca/sites/all/themes/lakehead_aBeauty/img/tagline.png" alt="Exceptional. Unconventional.">
+<section class="hero" id="hero">
+  <div class="slide active">
+    <img src="https://www.alaska.edu/_images/UA_1600x500_0006_Anthem.jpg" alt="UAF campus">
+    <div class="container hero-content">
+      <div class="hero-box">
+        <div class="hero-eyebrow">Empower Alaska</div>
+        <h1 class="hero-title">We are the University of Alaska</h1>
+        <span class="hero-button">Visit Empower Alaska site</span>
       </div>
-      <h1>Start your Lakehead journey.</h1>
-      <p>Discover programs, campus life and a community that challenges you to think differently.</p>
-      <a class="cta" href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">SEE WHAT'S AHEAD →</a>
     </div>
   </div>
-  <div class="hero-dots"><i></i><i></i><i></i></div>
+  <div class="slide">
+    <img src="https://www.alaska.edu/_images/cm-1600x500.jpg" alt="Female construction student">
+    <div class="container hero-content">
+      <div class="hero-box">
+        <div class="hero-eyebrow">Empower Alaska</div>
+        <h1 class="hero-title">Construction Management</h1>
+        <span class="hero-button">Visit Empower Alaska site</span>
+      </div>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="https://www.alaska.edu/_images/UA_1600x500_0000_Native.jpg" alt="Alaska Native student success">
+    <div class="container hero-content">
+      <div class="hero-box">
+        <div class="hero-eyebrow">Empower Alaska</div>
+        <h1 class="hero-title">Alaska Native Success</h1>
+        <span class="hero-button">Visit Empower Alaska site</span>
+      </div>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="https://www.alaska.edu/_images/UA_1600x500_0004_Circle%20of%20Giving.jpg" alt="UA Teacher education">
+    <div class="container hero-content">
+      <div class="hero-box">
+        <div class="hero-eyebrow">Empower Alaska</div>
+        <h1 class="hero-title">Teacher Education — The Circle of Giving</h1>
+        <span class="hero-button">Visit Empower Alaska site</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-controls">
+    <span class="arrow">‹</span>
+    <i class="dot active"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i>
+    <span class="arrow">›</span>
+  </div>
 </section>
 
-<div class="hero-tabs">
-  <div class="wrap tabgrid">
-    <a class="tab" href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener"><span>Choose Lakehead</span><span>→</span></a>
-    <a class="tab" href="https://www.lakeheadu.ca/admissions/financing" target="_blank" rel="noopener"><span>Financing Your Education</span><span>→</span></a>
-    <a class="tab" href="https://www.lakeheadu.ca/programs" target="_blank" rel="noopener"><span>Academic Programs</span><span>→</span></a>
+<div class="mega">
+  <div class="container">
+    <div class="mega-label">Admissions</div>
+    <div class="mega-links">
+      <span>How to apply</span>
+      <span>Cost of attendance</span>
+      <span>Financial Aid</span>
+      <span>Degrees and programs</span>
+      <span>Scholarships</span>
+    </div>
+  </div>
+</div>
+<div class="mega">
+  <div class="container">
+    <div class="mega-label">UA System</div>
+    <div class="mega-links">
+      <span>About UA</span>
+      <span>UA Org Charts</span>
+      <span>UA System Home</span>
+      <span>System Office Directory</span>
+      <span>Board of Regents</span>
+      <span>Office of the President</span>
+      <span>Human Resources</span>
+      <span>Government Relations - Advocacy</span>
+      <span>UA Lands Office</span>
+      <span>Alaska 529</span>
+      <span>UA Journey</span>
+    </div>
   </div>
 </div>
 
 <main>
-<section class="wolves">
-  <div class="wrap">
-    <h2 class="section-title">Hear from our<br>Thunderwolves</h2>
-    <div class="rule"></div>
-    <div class="wolves-grid">
-      <div class="wolves-copy">
-        <p>At Lakehead University you'll join a community that will push you to defy limitations and challenge conventions. Meet some of the students, faculty, alumni, and members of the university community to understand why Lakehead was the right choice for them - and you!</p>
-        <div class="wolves-points">
-          <div class="wolf-point">Professors know more than just your student number and grade</div>
-          <div class="wolf-point">Small and supportive community with the highest potential for academic growth and success</div>
-          <div class="wolf-point">Dare to be different and stand out from the crowd. Start creating connections that will last a lifetime.</div>
-        </div>
+<section class="section">
+  <div class="container">
+    <h2 class="center">Information for Prospective Students</h2>
+    <div class="prospective-grid">
+      <div class="prospective-card">
+        <h3>Degrees and Programs</h3>
+        <p>Browse offerings from short-course workforce training, to associate, bachelor’s, and master’s degrees, and doctorates.</p>
       </div>
-      <a class="wolves-media" href="https://youtu.be/iHW3wf-v-wk" target="_blank" rel="noopener">
-        <img src="https://www.lakeheadu.ca/sites/default/files/uploads/104/Orientation/Images/orientationfun.jpg" alt="Lakehead Thunderwolves">
-        <div class="play">▶</div>
-      </a>
+      <div class="prospective-card">
+        <h3>Cost of Attendance</h3>
+        <p>Find out more about the cost of attendance, room and board, tuition and fees, and financial aid.</p>
+      </div>
+      <div class="prospective-card">
+        <h3>How to Apply</h3>
+        <p>Learn about UA admission processes and link to our university applications.</p>
+      </div>
+      <div class="prospective-card">
+        <h3>Workforce Development</h3>
+        <p>Explore workforce training and access career services.</p>
+      </div>
+    </div>
+    <div class="center"><span class="discover">Discover our three universities and campuses across Alaska</span></div>
+  </div>
+</section>
+
+<section class="section gray">
+  <div class="container">
+    <h2 class="center">Featured Campaigns</h2>
+    <div class="campaign-grid">
+      <div class="campaign"><div class="campaign-text"><strong>Teach Alaska</strong><span>Nationally Accredited &amp; State Approved Teacher Education Programs</span></div></div>
+      <div class="campaign"><div class="campaign-text"><strong>Empower Alaska</strong><span>The University of Alaska shapes the minds of today and the economy of tomorrow</span></div></div>
+      <div class="campaign"><div class="campaign-text"><strong>Financial Aid</strong><span>Financial aid, scholarships, grants, work-study, and more are available</span></div></div>
+      <div class="campaign"><div class="campaign-text"><strong>Systemwide Attainment Framework</strong><span>Aligning work across the UA System to recruit, retain, and graduate more Alaskans</span></div></div>
     </div>
   </div>
 </section>
 
-<section class="explore">
-  <div class="wrap">
-    <h2 class="section-title">Explore Lakehead</h2>
-    <div class="rule"></div>
-    <div class="explore-top">
-      <label for="iam">I am a</label>
-      <select id="iam">
-        <option>Select</option>
-        <option>Future Student</option>
-        <option>Current Student</option>
-        <option>International Student</option>
-        <option>Parent or Supporter</option>
-      </select>
+<section class="section">
+  <div class="container">
+    <div class="news-head">
+      <h2>UA news and information</h2>
+      <span class="more-link">Visit the UA News Center</span>
     </div>
+    <div class="news-columns">
+      <div class="news-col">
+        <h3>System News</h3>
+        <div class="story">
+          <img src="https://www.alaska.edu/news/images/ua-ds-neurodiversity-workshop-series-thumbnail.png" alt="">
+          <div><div class="story-title">Fall 2026 UA DS 'All Access' Neurodiversity Workshop Series: Free registration links &amp; details</div><div class="story-date">September 04, 2026</div><p>Join UA Disability Services this fall for a three-part virtual workshop series exploring neurodiversity in higher education.</p></div>
+        </div>
+        <div class="story">
+          <img src="https://www.alaska.edu/news/images/alaska529.tuition.waiver.thumbnail.png" alt="">
+          <div><div class="story-title">Your tuition benefit and Alaska 529: A formula for success</div><div class="story-date">September 04, 2026</div><p>As a University of Alaska employee, you may have access to one of UA's most valuable benefits.</p></div>
+        </div>
+        <span class="more-link">More News</span>
+      </div>
 
-    <div class="explore-grid">
-      <article class="ex-card">
-        <h3>Find your program</h3>
-        <p>Find a program that matches your interests and aspirations</p>
-        <a href="https://www.lakeheadu.ca/programs" target="_blank" rel="noopener">Learn about our programs →</a>
-      </article>
-      <article class="ex-card">
-        <h3>How to apply</h3>
-        <p>Learn how to apply and start your Lakehead journey</p>
-        <a href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">Get started →</a>
-      </article>
-      <article class="ex-card">
-        <h3>Campus Tours</h3>
-        <p>Experience the highlights of our beautiful campus with one of our tour guides</p>
-        <a href="https://www.lakeheadu.ca/admissions/campus-tours" target="_blank" rel="noopener">Visit our campuses →</a>
-      </article>
-      <article class="ex-card">
-        <h3>Application Deadlines</h3>
-        <p>Learn about the application deadlines and ensure you're ready</p>
-        <a href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">View our application deadlines →</a>
-      </article>
-      <article class="ex-card">
-        <h3>Tuition &amp; fees</h3>
-        <p>Familiarize yourself with the cost and fees associated with your program</p>
-        <a href="https://www.lakeheadu.ca/students/finances/student-fees" target="_blank" rel="noopener">Learn about tuition information →</a>
-      </article>
-      <article class="ex-card">
-        <h3>Stay Connected</h3>
-        <p>Sign up to receive invitations to our special events, updates and more!</p>
-        <a href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">Stay connected →</a>
-      </article>
+      <div class="news-col">
+        <h3>Did You Know?</h3>
+        <div class="story">
+          <img src="https://www.alaska.edu/_images/UA_1600x500_0000_Native.jpg" alt="">
+          <div><div class="story-title">Did you know for the first time in UA history, Alaska Native language names will lead a university course listing?</div><div class="story-date">August 26, 2026</div><p>A new dual enrollment course in Indigenous Health and Healing Pathway is offered through UAS.</p></div>
+        </div>
+        <div class="story">
+          <img src="https://www.alaska.edu/_images/cm-1600x500.jpg" alt="">
+          <div><div class="story-title">Did you know UAA's automotive and diesel program is taught entirely by its own graduates?</div><div class="story-date">July 22, 2026</div><p>Long-time department leadership has built a strong culture and community.</p></div>
+        </div>
+        <span class="more-link">More Stories</span>
+      </div>
+
+      <div class="news-col">
+        <h3>UA in the News</h3>
+        <div class="story">
+          <img src="https://www.alaska.edu/_images/UA_1600x500_0004_Circle%20of%20Giving.jpg" alt="">
+          <div><div class="story-title">More out-of-state students opt for University of Alaska Southeast, with new in-state tuition rate</div><div class="story-date">August 24, 2026</div><p>UAS saw a boost in enrollment of out-of-state students.</p></div>
+        </div>
+        <div class="story">
+          <img src="https://www.alaska.edu/_images/UA_1600x500_0006_Anthem.jpg" alt="">
+          <div><div class="story-title">Disappearing lakes and AI are helping scientists map Arctic permafrost thaw in near-real time</div><div class="story-date">August 27, 2026</div><p>Researchers created an interactive website to track permafrost thaw across the Arctic.</p></div>
+        </div>
+        <span class="more-link">More News</span>
+      </div>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <h2 class="section-title">News &amp; Stories</h2>
-    <div class="rule"></div>
-    <div class="news-grid">
-      <a class="news-card" href="https://www.lakeheadu.ca/about/news-and-events/news/archive/node/351463" target="_blank" rel="noopener">
-        <div class="news-img"><img src="https://www.lakeheadu.ca/sites/default/files/Sept3_MoveIn.jpg" alt="Lakehead move-in"></div>
-        <div class="news-date">September 3, 2026</div>
-        <h3>Lakehead University welcomes students and faculty for the start of a new academic year</h3>
-        <p>A new academic year is about to begin at Lakehead University.</p>
-      </a>
-      <a class="news-card" href="https://www.lakeheadu.ca/about/news-and-events/news/archive/2026/node/351448" target="_blank" rel="noopener">
-        <div class="news-img"><img src="https://www.lakeheadu.ca/sites/default/files/uploads/113/Home/PepRally20%20_resize.jpg" alt="Lakehead students"></div>
-        <div class="news-date">September 2, 2026</div>
-        <h3>Death is Something We Should Tackle Head On</h3>
-        <p>Dr. Kathy Kortes-Miller Wants Us to Talk about the Ultimate Taboo.</p>
-      </a>
-      <a class="news-card" href="https://www.lakeheadu.ca/about/news-and-events/news/archive/2026/node/351392" target="_blank" rel="noopener">
-        <div class="news-img"><img src="https://www.lakeheadu.ca/sites/default/files/uploads/293/images/orientation/future_resized.jpg" alt="Lakehead community"></div>
-        <div class="news-date">September 1, 2026</div>
-        <h3>Chris Adams Named First Entrepreneur-in-Residence</h3>
-        <p>Adams Will Expand Lakehead's Entrepreneurial Potential.</p>
-      </a>
+<section class="facts">
+  <div class="container">
+    <h2>Quick Facts</h2>
+    <div class="fact-grid">
+      <div class="fact"><strong>~500</strong><span>Degrees, certificates and endorsements</span></div>
+      <div class="fact"><strong>~140</strong><span>eLearning programs</span></div>
+      <div class="fact"><strong>20,500</strong><span>Students enrolled in 2025</span></div>
+      <div class="fact"><strong>100,000+</strong><span>Alumni</span></div>
+      <div class="fact"><strong>$239.7 M</strong><span>Research expenditure</span></div>
     </div>
-    <a class="more" href="https://www.lakeheadu.ca/about/news-and-events" target="_blank" rel="noopener">View Campus Connection →</a>
   </div>
 </section>
 
-<section class="events">
-  <div class="wrap">
-    <h2 class="section-title">Events</h2>
-    <div class="rule"></div>
-    <div class="event-grid">
-      <article class="event">
-        <div class="event-date">SEP <strong>5</strong></div>
-        <h3>Barrie Downtown Adventure</h3>
-        <p>10:00 AM to 2:00 PM / Meet Outside of 24 Maple, Barrie STEM Hub</p>
-        <a href="https://www.lakeheadu.ca/about/news-and-events/events" target="_blank" rel="noopener">Add to Calendar</a>
-      </article>
-      <article class="event">
-        <div class="event-date">SEP <strong>5</strong></div>
-        <h3>(OR) Downtown Adventure</h3>
-        <p>10:00 AM to 2:00 PM / Meet Outside of Simcoe Hall, Orillia Campus</p>
-        <a href="https://www.lakeheadu.ca/about/news-and-events/events" target="_blank" rel="noopener">Add to Calendar</a>
-      </article>
-      <article class="event">
-        <div class="event-date">SEP <strong>5</strong></div>
-        <h3>Downtown Adventure</h3>
-        <p>11:00 AM / Agora Circle Bus Loop to Marina Park / Thunder Bay</p>
-        <a href="https://www.lakeheadu.ca/about/news-and-events/events" target="_blank" rel="noopener">Add to Calendar</a>
-      </article>
-      <article class="event">
-        <div class="event-date">SEP <strong>5</strong></div>
-        <h3>Glow Party</h3>
-        <p>8:00 PM to 11:00 PM / The Outpost / Thunder Bay</p>
-        <a href="https://www.lakeheadu.ca/about/news-and-events/events" target="_blank" rel="noopener">Add to Calendar</a>
-      </article>
-    </div>
-    <a class="more" style="color:white;border-color:var(--blaze)" href="https://www.lakeheadu.ca/about/news-and-events/events" target="_blank" rel="noopener">View Event Calendar →</a>
-  </div>
-</section>
-
-<section class="tours">
-  <div class="wrap">
-    <h2 class="section-title">Virtual Tours</h2>
-    <div class="rule"></div>
-    <div class="tour-grid">
-      <a class="tour" href="https://virtualtour.lakeheadu.ca/" target="_blank" rel="noopener">
-        <img src="https://www.lakeheadu.ca/sites/default/files/uploads/293/images/orientation/Lake-Tamblyn-resized.jpg" alt="Thunder Bay campus">
-        <div class="tour-copy"><small>Virtual tour</small><strong>Thunder Bay</strong></div>
-      </a>
-      <a class="tour" href="https://virtualtour.lakeheadu.ca/" target="_blank" rel="noopener">
-        <img src="https://www.lakeheadu.ca/sites/default/files/uploads/104/Orientation/Images/orientationfun.jpg" alt="Orillia campus students">
-        <div class="tour-copy"><small>Virtual tour</small><strong>Orillia</strong></div>
-      </a>
-    </div>
+<section class="traditions">
+  <div class="container">
+    <img class="logo-large" src="https://www.alaska.edu/opa/files/color.jpg" alt="University of Alaska">
+    <h3>Many Traditions One Alaska</h3>
+    <p>The University of Alaska is a land-, sea- and space-grant system of higher education established in 1917. The UA system's three universities (UAA, UAF and UAS) are separately accredited institutions with campuses and extended learning centers across the state of Alaska.</p>
   </div>
 </section>
 </main>
 
 <footer>
-  <div class="wrap">
+  <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="footer-logo">
-          <div class="shield"></div>
-          <div class="logotype">Lakehead<span>University</span></div>
-        </div>
-        <address>
-          955 Oliver Road<br>
-          Thunder Bay, Ontario, Canada P7B 5E1<br>
-          (807) 343-8110
-        </address>
+        <div class="footer-title">University of Alaska System</div>
+        <div class="footer-copy">2025 Yukon Drive, Fairbanks, AK 99775<br>907-450-8100 - Public Affairs<br>907-450-8200 - Human Resources<br>907 450-8300 - OIT</div>
       </div>
-      <div>
-        <h4>Programs &amp; Admissions</h4>
-        <a href="https://www.lakeheadu.ca/programs" target="_blank" rel="noopener">Programs</a>
-        <a href="https://www.lakeheadu.ca/admissions" target="_blank" rel="noopener">Admissions</a>
-        <a href="https://www.lakeheadu.ca/admissions/campus-tours" target="_blank" rel="noopener">Campus Tours</a>
-        <a href="https://www.lakeheadu.ca/international" target="_blank" rel="noopener">International Students</a>
-      </div>
-      <div>
-        <h4>Lakehead</h4>
-        <a href="https://www.lakeheadu.ca/campus-life" target="_blank" rel="noopener">Campus Life</a>
-        <a href="https://www.lakeheadu.ca/indigenous" target="_blank" rel="noopener">Indigenous</a>
-        <a href="https://www.lakeheadu.ca/research-and-innovation" target="_blank" rel="noopener">Research &amp; Innovation</a>
-        <a href="https://www.lakeheadu.ca/about" target="_blank" rel="noopener">About</a>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <a href="https://library.lakeheadu.ca/" target="_blank" rel="noopener">Library</a>
-        <a href="https://myportal.lakeheadu.ca/" target="_blank" rel="noopener">myPortal</a>
-        <a href="https://myemail.lakeheadu.ca/" target="_blank" rel="noopener">myEmail</a>
-        <a href="https://www.lakeheadu.ca/about/contact-us" target="_blank" rel="noopener">Contact</a>
+      <div class="footer-right">
+        <div class="footer-title">SYSTEM OFFICE DIRECTORY</div>
+        <div class="footer-copy">Last Updated: 08/28/2026</div>
       </div>
     </div>
     <div class="footer-bottom">
-      <div>Lakehead University</div>
-      <div>Thunder Bay • Orillia • Barrie</div>
+      The University of Alaska is an Equal Opportunity/Equal Access Employer and Educational Institution. The University is committed to a policy of non-discrimination against individuals on the basis of any legally protected status.<br>
+      UA is committed to providing accessible websites. This site is maintained by OIT. For questions or comments regarding this page, contact helpdesk@alaska.edu
     </div>
   </div>
 </footer>
 
+<script>
+(function(){
+  const slides=[...document.querySelectorAll('.slide')];
+  const dots=[...document.querySelectorAll('.dot')];
+  let i=0;
+  setInterval(()=>{
+    slides[i].classList.remove('active');
+    dots[i].classList.remove('active');
+    i=(i+1)%slides.length;
+    slides[i].classList.add('active');
+    dots[i].classList.add('active');
+  },5000);
+
+  document.addEventListener('click',function(e){
+    if(e.target.closest('a,button,.hero-button,.discover,.more-link')) e.preventDefault();
+  });
+})();
+</script>
 </body>
 </html>
