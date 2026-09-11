@@ -1,1 +1,27 @@
-h
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaStack — Cloud Infrastructure</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2e;--text:#f4f7fb;--muted:#9ba7bd;--accent:#6ea8fe;--line:#24304a}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#0b1020,#0f1628);color:var(--text)}a{text-decoration:none;color:inherit}.wrap{width:min(1100px,calc(100% - 40px));margin:auto}
+header{border-bottom:1px solid var(--line);background:rgba(11,16,32,.88);position:sticky;top:0;backdrop-filter:blur(10px)}nav{height:72px;display:flex;align-items:center;justify-content:space-between}.brand{font-size:22px;font-weight:800}.brand span{color:var(--accent)}.navlinks{display:flex;gap:24px;font-size:14px;color:var(--muted)}
+.hero{padding:110px 0 90px;text-align:center}.badge{display:inline-block;padding:7px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:13px;margin-bottom:24px}h1{font-size:clamp(48px,7vw,82px);line-height:.98;margin:0 auto 24px;max-width:850px;letter-spacing:-3px}.hero p{max-width:680px;margin:0 auto 30px;color:var(--muted);font-size:18px;line-height:1.6}.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.btn{padding:13px 18px;border-radius:10px;font-weight:700;font-size:14px;border:1px solid var(--line)}.primary{background:var(--accent);color:#07101f;border-color:var(--accent)}.secondary{background:#121a2e}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding-bottom:90px}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px}.icon{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#1a2742;color:var(--accent);font-size:20px;margin-bottom:18px}.card h3{margin:0 0 10px;font-size:20px}.card p{margin:0;color:var(--muted);line-height:1.55;font-size:14px}
+.status{margin-bottom:90px;border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:24px;display:flex;align-items:center;justify-content:space-between;gap:20px}.dot{width:10px;height:10px;border-radius:50%;background:#45d483;display:inline-block;margin-right:8px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px}
+@media(max-width:760px){.navlinks{display:none}.hero{padding:80px 0 60px}h1{letter-spacing:-2px}.grid{grid-template-columns:1fr}.status{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav><div class="brand">Nova<span>Stack</span></div><div class="navlinks"><a href="#">Platform</a><a href="#">Docs</a><a href="#">Pricing</a><a href="#">Status</a></div></nav></div></header>
+<main>
+<section class="hero wrap"><div class="badge">Cloud infrastructure for modern teams</div><h1>Deploy faster. Scale without the noise.</h1><p>NovaStack is a lightweight cloud platform for developers who want simple deployments, reliable infrastructure, and clear pricing.</p><div class="actions"><a class="btn primary" href="#">Start Building</a><a class="btn secondary" href="#">View Documentation</a></div></section>
+<section class="wrap grid"><article class="card"><div class="icon">⚡</div><h3>Fast Deployments</h3><p>Push your code and go live in seconds with automated builds and zero-downtime releases.</p></article><article class="card"><div class="icon">☁</div><h3>Global Edge</h3><p>Serve applications closer to your users with a distributed network built for low latency.</p></article><article class="card"><div class="icon">⌁</div><h3>Simple Monitoring</h3><p>Track uptime, resource usage, and deployments from one clean dashboard.</p></article></section>
+<section class="wrap status"><div><strong><span class="dot"></span>All systems operational</strong><div style="color:#9ba7bd;margin-top:6px;font-size:14px">API, compute, storage, and edge services are running normally.</div></div><div style="color:#9ba7bd;font-size:13px">Last checked just now</div></section>
+</main>
+<footer><div class="wrap">© 2026 NovaStack. Built for developers.</div></footer>
+</body>
+</html>
